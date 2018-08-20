@@ -7,7 +7,6 @@ var disciplines = [additionEl, subtractionEl, divisionEl];
 var JSONpresent = JSON.parse(localStorage.getItem('User'));
 var nameForm = document.getElementById('usernameform');
 var username = '';
-var quizSubject;
 var selectedQuiz; //used to store name of selected quiz set
 
 
@@ -33,11 +32,12 @@ nameForm.addEventListener('submit', function(event){
 });
 
 for(var i = 0; i < disciplines.length; i++){
-  disciplines[i].addEventListener('click', function(){
+  disciplines[i].addEventListener('click', function(e){
     if(username){
       var me = new User(username);
       localStorage.setItem('User', JSON.stringify(me));
-      runQuiz();
+      var quizName = e.target.id;
+      runQuiz(quizName);
     } else {
       alert('Please Enter a Username');
     }

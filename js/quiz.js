@@ -52,7 +52,6 @@ function generateRandomQuestionIndex(){
 }
 
 
-
 //Display Question
 function displayQuestion(questionIndex){
   //Add question to front and back of card
@@ -79,6 +78,7 @@ function displayQuestion(questionIndex){
 
 //On page load, display the first question
 // and display the question/answer in the question-back div
+generateRandomQuestionIndex();
 displayQuestion(0);
 
 //Display initial progress numbers
