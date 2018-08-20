@@ -55,9 +55,13 @@ function generateRandomQuestionIndex(){
 
 //Display Question
 function displayQuestion(questionIndex){
-  var questionDiv = document.getElementById('question-front');
-  questionDiv.innerText = quizSet.questions[questionIndex].question;
+  //Add question to front and back of card
+  var questionDivFront = document.getElementById('question-front');
+  questionDivFront.innerText = quizSet.questions[questionIndex].question;
+  var questionDivBack = document.getElementById('question-back');
+  questionDivBack.innerText = quizSet.questions[questionIndex].question;
 
+  //Add answer options to front of card
   var answer1 = document.getElementById('a1');
   answer1.innerText = quizSet.questions[questionIndex].answerArr[0];
 
@@ -66,13 +70,18 @@ function displayQuestion(questionIndex){
 
   var answer3 = document.getElementById('a3');
   answer3.innerText = quizSet.questions[questionIndex].answerArr[2];
+
+  //Add answer to back of card
+  var cardBack = document.getElementById('answer');
+  cardBack.innerText = quizSet.questions[questionIndex].answerArr[0];
 }
 
 
 //On page load, display the first question
+// and display the question/answer in the question-back div
 displayQuestion(0);
+
 //Display initial progress numbers
 var progressDiv = document.getElementById('top-progress-display');
 progressDiv.innerText = `${progress} / ${quizSet.questions.length}`;
 
-//Display the question/answer in the question-back div
