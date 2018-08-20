@@ -1,0 +1,28 @@
+nav {
+ border-bottom: 5px solid black; 
+}
+
+nav h1 {
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 10px;
+
+}
+
+ul {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+}
+
+li {
+  display: inline-block;
+  margin: 0 14%;
+}
+
+li a {
+  text-decoration: none;
+}
