@@ -1,0 +1,3 @@
+# Conflict Resolution Plan
+
+When faced with conflict, the team will set time aside at the end of our group standup meetings to discuss the conflict as a group and strive to reach a constructive solution. If the conflict persists beyond that time, a third party team will be asked to act as mediator in a discussion amongst the team members involved. If need be, the instructional team will be consulted for guidance on resolving the conflict.
