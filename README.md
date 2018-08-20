@@ -31,11 +31,6 @@ project
 │
 └───developer_guidelines
 │   │   conflicts.md
-│   │
-│   └───subfolder1
-│       │   file111.txt
-│       │   file112.txt
-│       │   ...
 │   
 └───js
 │    │   app.js
