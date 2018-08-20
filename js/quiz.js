@@ -5,6 +5,8 @@ var addition = new QuizSet('addition', []);
 var subtraction = new QuizSet('subtraction', []);
 var division = new QuizSet('division', []);
 
+var progress = 0;
+
 var quizSets = [addition, subtraction, division];
 
 var questionInfo = [
@@ -50,9 +52,27 @@ function generateRandomQuestionIndex(){
 }
 
 
-//Display
+
+//Display Question
+function displayQuestion(questionIndex){
+  var questionDiv = document.getElementById('question-front');
+  questionDiv.innerText = quizSet.questions[questionIndex].question;
+
+  var answer1 = document.getElementById('a1');
+  answer1.innerText = quizSet.questions[questionIndex].answerArr[0];
+
+  var answer2 = document.getElementById('a2');
+  answer2.innerText = quizSet.questions[questionIndex].answerArr[1];
+
+  var answer3 = document.getElementById('a3');
+  answer3.innerText = quizSet.questions[questionIndex].answerArr[2];
+}
 
 
 //On page load, display the first question
+displayQuestion(0);
 //Display initial progress numbers
+var progressDiv = document.getElementById('top-progress-display');
+progressDiv.innerText = `${progress} / ${quizSet.questions.length}`;
+
 //Display the question/answer in the question-back div
