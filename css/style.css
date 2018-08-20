@@ -1,3 +1,7 @@
+body {
+  margin: 0 auto;
+  max-width: 80%;
+}
 nav {
  border-bottom: 5px solid black; 
 }
@@ -25,4 +29,12 @@ li {
 
 li a {
   text-decoration: none;
+}
+.cards {
+  max-width: 40%;
+  border: 2px solid black;
+}
+
+.card {
+  max-width: 80px;
 }
