@@ -1,10 +1,20 @@
 'use strict';
 
+
 // var deckOne = document.getElementById('deck-one');
 var addition = document.getElementById('addition');
+var JSONpresent = JSON.parse(localStorage.getItem('user'));
 var nameForm = document.getElementById('usernameform');
 var username = '';
 var quizSubject;
+
+if (JSONpresent){
+  nameForm.setAttribute('style','display : none');
+  var greet = document.getElementsByClassName('formOrGreeting');
+  var hi = document.createElement('p');
+  hi.textContent = `Welocme back ${JSONpresent[0].username}`;
+  greet.appendChild(hi);
+}
 
 nameForm.addEventListener('submit', function(event){
   event.preventDefault();
@@ -31,3 +41,4 @@ addition.addEventListener('click', function(){
 function runQuiz(){
   window.location.href = 'quiz.html';
 }
+
