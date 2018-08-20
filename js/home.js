@@ -8,6 +8,7 @@ var JSONpresent = JSON.parse(localStorage.getItem('User'));
 var nameForm = document.getElementById('usernameform');
 var username = '';
 var quizSubject;
+var selectedQuiz; //used to store name of selected quiz set
 
 
 if (JSONpresent){
@@ -43,9 +44,9 @@ for(var i = 0; i < disciplines.length; i++){
   });
 }
 
-
-
-function runQuiz(){
+function runQuiz(quizName){
+  console.log(selectedQuiz);
+  localStorage.setItem('selectedQuiz', JSON.stringify(quizName));
   window.location.href = 'quiz.html';
 }
 
