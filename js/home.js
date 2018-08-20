@@ -9,13 +9,21 @@ var nameForm = document.getElementById('usernameform');
 var username = '';
 var quizSubject;
 
+
 if (JSONpresent){
   nameForm.setAttribute('style','display:none');
-  var greet = document.getElementsByClassName('formOrGreeting');
+  var greeting = document.getElementsByClassName('formOrGreeting');
   var hi = document.createElement('p');
-  username = JSONpresent[0].userName;
-  hi.textContent = `Welcome back ${JSONpresent[0].userName}`;
-  greet.appendChild(hi);
+  var notUser = document.createElement('p');
+  notUser.textContent = `Not ${JSONpresent.userName}?`;
+  username = JSONpresent.userName;
+  hi.textContent = `Welcome back ${JSONpresent.userName}`;
+  greeting[0].appendChild(hi);
+  greeting[0].appendChild(notUser);
+  notUser.setAttribute('onClick', 'window.location.reload()');
+  notUser.addEventListener('click', function(){
+    localStorage.removeItem('User');
+  });
 }
 
 nameForm.addEventListener('submit', function(event){
@@ -27,7 +35,7 @@ for(var i = 0; i < disciplines.length; i++){
   disciplines[i].addEventListener('click', function(){
     if(username){
       var me = new User(username);
-      localStorage.setItem('user', JSON.stringify(me));
+      localStorage.setItem('User', JSON.stringify(me));
       runQuiz();
     } else {
       alert('Please Enter a Username');
