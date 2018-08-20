@@ -7,6 +7,7 @@ var JSONpresent = JSON.parse(localStorage.getItem('user'));
 var nameForm = document.getElementById('usernameform');
 var username = '';
 var quizSubject;
+var selectedQuiz; //used to store name of selected quiz set
 
 if (JSONpresent){
   nameForm.setAttribute('style','display : none');
@@ -30,15 +31,18 @@ nameForm.addEventListener('submit', function(event){
 //   }
 // });
 
-addition.addEventListener('click', function(){
+addition.addEventListener('click', function(e){
   if(username){
-    runQuiz();
+    var quizName = e.target.id;
+    runQuiz(quizName);
   } else {
     alert('Please Enter a Username');
   }
 });
 
-function runQuiz(){
+function runQuiz(quizName){
+  console.log(selectedQuiz);
+  localStorage.setItem('selectedQuiz', JSON.stringify(quizName));
   window.location.href = 'quiz.html';
 }
 
