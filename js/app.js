@@ -54,7 +54,4 @@ User.prototype.saveToLocalStorage = function () {
 //   }
 // }
 
-var me = new User('Kendra', []);
-me.saveToLocalStorage();
-
 console.log('quiz sets created');

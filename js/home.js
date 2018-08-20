@@ -1,44 +1,48 @@
 'use strict';
 
-
-// var deckOne = document.getElementById('deck-one');
-var addition = document.getElementById('addition');
-var JSONpresent = JSON.parse(localStorage.getItem('user'));
+var additionEl = document.getElementById('addition');
+var subtractionEl = document.getElementById('subtraction');
+var divisionEl = document.getElementById('division');
+var disciplines = [additionEl, subtractionEl, divisionEl];
+var JSONpresent = JSON.parse(localStorage.getItem('User'));
 var nameForm = document.getElementById('usernameform');
 var username = '';
 var quizSubject;
 var selectedQuiz; //used to store name of selected quiz set
 
+
 if (JSONpresent){
-  nameForm.setAttribute('style','display : none');
-  var greet = document.getElementsByClassName('formOrGreeting');
+  nameForm.setAttribute('style','display:none');
+  var greeting = document.getElementsByClassName('formOrGreeting');
   var hi = document.createElement('p');
-  hi.textContent = `Welocme back ${JSONpresent[0].username}`;
-  greet.appendChild(hi);
+  var notUser = document.createElement('p');
+  notUser.textContent = `Not ${JSONpresent.userName}?`;
+  username = JSONpresent.userName;
+  hi.textContent = `Welcome back ${JSONpresent.userName}`;
+  greeting[0].appendChild(hi);
+  greeting[0].appendChild(notUser);
+  notUser.setAttribute('onClick', 'window.location.reload()');
+  notUser.addEventListener('click', function(){
+    localStorage.removeItem('User');
+  });
 }
 
 nameForm.addEventListener('submit', function(event){
   event.preventDefault();
   username = event.target.username.value;
-  // console.log(event.target.username.value);
 });
 
-// deckOne.addEventListener('click', function(){
-//   if(username){
-//     runQuiz();
-//   } else {
-//     alert('Please Enter a Username');
-//   }
-// });
-
-addition.addEventListener('click', function(e){
-  if(username){
-    var quizName = e.target.id;
-    runQuiz(quizName);
-  } else {
-    alert('Please Enter a Username');
-  }
-});
+for(var i = 0; i < disciplines.length; i++){
+  disciplines[i].addEventListener('click', function(){
+    if(username){
+      var me = new User(username);
+      localStorage.setItem('User', JSON.stringify(me));
+      runQuiz();
+    } else {
+      alert('Please Enter a Username');
+    }
+  });
+}
 
 function runQuiz(quizName){
   console.log(selectedQuiz);
