@@ -72,13 +72,15 @@ function displayQuestion(index){
 
   //Add answer to back of card
   var cardBack = document.getElementById('answer');
-  cardBack.innerText = quizSet.questions[questionIndex].answerArr[0];
+  cardBack.innerText = quizSet.questions[index].answerArr[0];
 
-  var button = document.getElementById('card-button');
-  if(progress < questionDisplayOrder.length-1){
-    button.innerText = 'Next';
+  //Set button text to 'next' or 'results' depending on
+  //where the user is in the deck
+  var nextButton = document.getElementById('card-button');
+  if(progress < (questionDisplayOrder.length-1)){
+    nextButton.innerHTML = 'Next';
   }else{
-    button.innerText = 'Results';
+    nextButton.innterHTML = 'Results';
   }
   progress++;
   updateProgress();
