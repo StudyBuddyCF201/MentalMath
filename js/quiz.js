@@ -9,7 +9,7 @@ var subtraction = new QuizSet('subtraction', []);
 var division = new QuizSet('division', []);
 
 var progress = 0; //Tracks user progress through quiz deck
-var userResults = new Result(quizSetName); //Stores user results for this quiz
+
 
 //Quiz set containers
 var quizSets = [addition, subtraction, division];
@@ -32,6 +32,8 @@ var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'divisio
 
 //Get selected quiz name from quizSets (app.js)
 var quizSetName = JSON.parse(localStorage.getItem('selectedQuiz'));
+//Stores user results for this quiz
+var userResults = new Result(quizSetName); 
 //Get quiz set object whose name matches quizSetName
 var quizSet = quizSetObjects[quizSetName];
 
@@ -113,7 +115,12 @@ function displayScore(){
 //Handler on button to display next question once button is clicked
 var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
-  displayQuestion(questionDisplayOrder[progress-1]);
+  if(button.innerHTML === 'Results'){
+    window.location.href = 'results.html';
+  } else {
+    displayQuestion(questionDisplayOrder[progress-1]);
+  }
+  
 });
 
 //Event handler for registering correct/incorrect on card click.
@@ -121,9 +128,8 @@ button.addEventListener('click', function(){
 //FIX THIS
 var answerList = document.getElementById('answer-list');
 answerList.addEventListener('click', function(e){
-  var userAnswer = e.target.innerText;
-  console.log('***'+quizSet.questions[questionDisplayOrder[progress-1]].answerArr[0]);
-  if(userAnswer === quizSet.questions[questionDisplayOrder[progress-1]].answerArr[0]){
+  console.log(userResults.score);
+  if(e.target.dataset.value === 'true'){
     userResults.score++;
     displayScore();
   }

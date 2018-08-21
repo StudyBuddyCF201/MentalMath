@@ -21,7 +21,7 @@ function User(userName, results = []) {
 
 function Result(subject) {
   this.subject = subject;
-  this.score;
+  this.score = 0;
   var currentDate = new Date();
   this.date = currentDate.toDateString();
   this.quizTime;
