@@ -30,11 +30,16 @@ li {
 li a {
   text-decoration: none;
 }
+
 .cards {
   max-width: 40%;
   border: 2px solid black;
 }
 
 .card {
+  max-width: 80px;
+}
+
+img{
   max-width: 80px;
 }
