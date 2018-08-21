@@ -125,7 +125,6 @@ button.addEventListener('click', function(){
 
 //Event handler for registering correct/incorrect on card click.
 //Updates user score
-//FIX THIS
 var answerList = document.getElementById('answer-list');
 answerList.addEventListener('click', function(e){
   console.log(userResults.score);
