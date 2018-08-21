@@ -61,3 +61,5 @@ function runQuiz(quizName){
   localStorage.setItem('selectedQuiz', JSON.stringify(quizName));
   window.location.href = 'quiz.html';
 }
+
+var testUserObject = new User('testuser');

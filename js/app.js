@@ -36,22 +36,11 @@ User.prototype.saveToLocalStorage = function () {
   localStorage.setItem('User', JSON.stringify(this));
 };
 
-// var addition = new QuizSet('addition', []);
-// var subtraction = new QuizSet('subtraction', []);
-// var division = new QuizSet('division', []);
+//Functions that help convert localStorage data
+//parameter userData is parsed JSON from localStorage
+function convertToUserObject(userData){
+  //Create a new user with userName
+  //For each result owned by the user, create a Result
+  //object and push it to user.results
 
-// var quizSets = [addition, subtraction, division];
-
-// var questionInfo = [
-//   ['This is a question?', ['yes', 'no', 'maybe']],
-//   ['This is yet another question?', ['y', 'n', 'm']],
-//   ['This is a third question?', ['YES', 'NO', 'MAYBE']],
-// ];
-
-// for (var i = 0; i < 3; i++) {
-//   for (var j = 0; j < 3; j++) {
-//     quizSets[i].addQuestion(questionInfo[j][0], questionInfo[j][1]);
-//   }
-// }
-
-console.log('quiz sets created');
+}
