@@ -6,6 +6,17 @@ var username = '';
 var selectedQuiz; //used to store name of selected quiz set
 
 
+//Disable link on results-link and only allow user
+//to navigate to results if they have visited before
+var resultsLink = document.getElementById('results-link');
+resultsLink.addEventListener('click', function(e){
+  e.preventDefault();
+  if(JSONpresent){
+    window.location.href = 'results.html';
+  }
+});
+
+
 //If the user's info is in localStorage, welcome the user
 //and provide the option to change user name
 if (JSONpresent){
