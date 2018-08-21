@@ -36,14 +36,16 @@ cardDiv.addEventListener('click', function(e){
   username = usernameInput.value;
   console.log(username);
   if(username){
-    var me = new User(username);
-    localStorage.setItem('User', JSON.stringify(me));
-    quizName = e.target.id;
-    runQuiz(quizName);
+    if(quizName = e.target.dataset.name){
+      var me = new User(username);
+      localStorage.setItem('User', JSON.stringify(me));
+      runQuiz(quizName);
+    }
   }
   else if(JSONpresent){
-    quizName = e.target.id;
-    runQuiz(quizName);
+    if(quizName = e.target.dataset.name){
+      runQuiz(quizName);
+    }
   }
   else{
     alert('Please Enter a Username');
