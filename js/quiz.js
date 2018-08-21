@@ -63,8 +63,12 @@ function displayQuestion(index){
     var answer = document.getElementById('a' + (i+1));
     var answerIndex = answerDisplayOrder[i];
     answer.innerText = quizSet.questions[index].answerArr[answerIndex];
+    //Set dataset value to true if correct answer, else set to false
+    if(answerIndex === 0){
+      answer.dataset.value = true;
+    }
+    else answer.dataset.value = false;
   }
-
 
   //Add answer to back of card
   var cardBack = document.getElementById('answer');
