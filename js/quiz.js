@@ -33,9 +33,9 @@ var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'divisio
 //Get selected quiz name from quizSets (app.js)
 var quizSetName = JSON.parse(localStorage.getItem('selectedQuiz'));
 //Get User from local Storage
-var thisUser = JSON.parse(localStorage.getItem('User'));
+var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
 //Stores user results for this quiz
-var userResults = new Result(quizSetName); 
+var userResult = new Result(quizSetName); 
 //Get quiz set object whose name matches quizSetName
 var quizSet = quizSetObjects[quizSetName];
 
@@ -111,7 +111,7 @@ function displayProgress(){
 //Display score at top of page
 function displayScore(){
   var scoreDiv = document.getElementById('score-display');
-  scoreDiv.innerText = `Score: ${userResults.score}`;
+  scoreDiv.innerText = `Score: ${userResult.score}`;
 }
 
 //Handler on button to display next question once button is clicked
@@ -119,7 +119,7 @@ var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
   if(button.innerHTML === 'Results'){
     //add result object to User results array
-    thisUser.results.push(userResults);
+    thisUser.results.push(userResult);
     localStorage.setItem('User', JSON.stringify(thisUser));
     //redirect to results.html
     window.location.href = 'results.html';
@@ -131,12 +131,11 @@ button.addEventListener('click', function(){
 
 //Event handler for registering correct/incorrect on card click.
 //Updates user score
-//FIX THIS
 var answerList = document.getElementById('answer-list');
 answerList.addEventListener('click', function(e){
-  console.log(userResults.score);
+  console.log(userResult.score);
   if(e.target.dataset.value === 'true'){
-    userResults.score++;
+    userResult.score++;
     displayScore();
   }
 });
