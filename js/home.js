@@ -26,27 +26,34 @@ if (JSONpresent){
   });
 }
 
-nameForm.addEventListener('submit', function(event){
-  event.preventDefault();
-  username = event.target.username.value;
+
+//Add event listener to div with quiz choices
+//Register which quiz was chosen and also get the username
+//save User object to localStorage
+var cardDiv = document.getElementById('cards');
+cardDiv.addEventListener('click', function(e){
+  // e.preventDefault();
+  var usernameInput = document.getElementById('username');
+  username = usernameInput.value;
+  console.log(username);
+  if(username){
+    var me = new User(username);
+    localStorage.setItem('User', JSON.stringify(me));
+    var quizName = e.target.id;
+    runQuiz(quizName);
+  }else {
+    alert('Please Enter a Username');
+  }
 });
 
-for(var i = 0; i < disciplines.length; i++){
-  disciplines[i].addEventListener('click', function(e){
-    if(username){
-      var me = new User(username);
-      localStorage.setItem('User', JSON.stringify(me));
-      var quizName = e.target.id;
-      runQuiz(quizName);
-    } else {
-      alert('Please Enter a Username');
-    }
-  });
-}
+// for(var i = 0; i < disciplines.length; i++){
+//   disciplines[i].addEventListener('click', function(e){
+//     if(username){
+//   });
+// }
 
 function runQuiz(quizName){
   console.log(selectedQuiz);
   localStorage.setItem('selectedQuiz', JSON.stringify(quizName));
   window.location.href = 'quiz.html';
 }
-
