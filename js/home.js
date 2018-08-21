@@ -13,6 +13,7 @@ if (JSONpresent){
   var greeting = document.getElementsByClassName('formOrGreeting');
   var hi = document.createElement('p');
   var notUser = document.createElement('p');
+  notUser.className = 'notuser';
   notUser.textContent = `Not ${JSONpresent.userName}?`;
   username = JSONpresent.userName;
   hi.textContent = `Welcome back ${JSONpresent.userName}`;
