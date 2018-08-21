@@ -77,12 +77,12 @@ function displayQuestion(index){
   //Set button text to 'next' or 'results' depending on
   //where the user is in the deck
   var nextButton = document.getElementById('card-button');
-  if(progress < (questionDisplayOrder.length-1)){
+  console.log(`questionDisplayOrder ${questionDisplayOrder.length}, progress: ${progress}`);
+  if(progress <= (questionDisplayOrder.length-1)){
     nextButton.innerHTML = 'Next';
   }else{
-    nextButton.innterHTML = 'Results';
+    nextButton.innerHTML = 'Results';
   }
-  progress++; //increment progress
   displayProgress();
 }
 
@@ -95,12 +95,13 @@ displayProgress();
 displayScore();
 
 //Display the current question
-displayQuestion(questionDisplayOrder[progress]);
+displayQuestion(questionDisplayOrder[progress-1]);
 
 //Display progress counter at top of page
 function displayProgress(){
   var progressDiv = document.getElementById('top-progress-display');
   progressDiv.innerText = `${progress} / ${quizSet.questions.length}`;
+  progress++;
 }
 
 //Display score at top of page
@@ -112,7 +113,7 @@ function displayScore(){
 //Handler on button to display next question once button is clicked
 var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
-  displayQuestion(questionDisplayOrder[progress]);
+  displayQuestion(questionDisplayOrder[progress-1]);
 });
 
 //Event handler for registering correct/incorrect on card click.
@@ -121,8 +122,8 @@ button.addEventListener('click', function(){
 var answerList = document.getElementById('answer-list');
 answerList.addEventListener('click', function(e){
   var userAnswer = e.target.innerText;
-  console.log('***'+quizSet.questions[questionDisplayOrder[progress]].answerArr[0]);
-  if(userAnswer === quizSet.questions[questionDisplayOrder[progress]].answerArr[0]){
+  console.log('***'+quizSet.questions[questionDisplayOrder[progress-1]].answerArr[0]);
+  if(userAnswer === quizSet.questions[questionDisplayOrder[progress-1]].answerArr[0]){
     userResults.score++;
     displayScore();
   }
