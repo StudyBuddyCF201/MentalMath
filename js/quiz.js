@@ -1,12 +1,13 @@
 'use strict';
 
 var questionDisplayOrder = []; //Tracks order of question indices for display
+var answerDisplayOrder = []; //Tracks order of answer indices for display
 var addition = new QuizSet('addition', []);
 var subtraction = new QuizSet('subtraction', []);
 var division = new QuizSet('division', []);
 
 var progress = 0;
-var score = 0;
+var userResults = new Result(quizSetName);
 
 var quizSets = [addition, subtraction, division];
 
@@ -37,34 +38,33 @@ var quizSet = quizSetObjects[quizSetName];
 
 //Generates random number in range [0, 3]
 //pushes the index to shownQuestions and displays question/answers in div
-function generateRandomQuestionIndex(){
+function generateRandomQuestionIndex(arr){
   for(var i=0; i < quizSet.questions.length; i++){
     do{
       var randIndex = Math.floor(Math.random() * quizSet.questions.length);
-    }while(questionDisplayOrder.includes(randIndex));
+    }while(arr.includes(randIndex));
     //add random number to questionDisplayOrder array
-    questionDisplayOrder.push(randIndex);
+    arr.push(randIndex);
   }
 }
 
 
 //Display Question
-function displayQuestion(questionIndex){
+function displayQuestion(index){
   //Add question to front and back of card
   var questionDivFront = document.getElementById('question-front');
-  questionDivFront.innerText = quizSet.questions[questionIndex].question;
+  questionDivFront.innerText = quizSet.questions[index].question;
   var questionDivBack = document.getElementById('question-back');
-  questionDivBack.innerText = quizSet.questions[questionIndex].question;
+  questionDivBack.innerText = quizSet.questions[index].question;
 
-  //Add answer options to front of card
-  var answer1 = document.getElementById('a1');
-  answer1.innerText = quizSet.questions[questionIndex].answerArr[0];
+  // For each answer list item
+  // Add answer text
+  for(var i=0; i < 3; i++){
+    var answer = document.getElementById('a' + (i+1));
+    var answerIndex = answerDisplayOrder[i];
+    answer.innerText = quizSet.questions[index].answerArr[answerIndex];
+  }
 
-  var answer2 = document.getElementById('a2');
-  answer2.innerText = quizSet.questions[questionIndex].answerArr[1];
-
-  var answer3 = document.getElementById('a3');
-  answer3.innerText = quizSet.questions[questionIndex].answerArr[2];
 
   //Add answer to back of card
   var cardBack = document.getElementById('answer');
@@ -83,11 +83,12 @@ function displayQuestion(questionIndex){
 
 //On page load, display the first question
 // and display the question/answer in the question-back div
-generateRandomQuestionIndex();
+generateRandomQuestionIndex(questionDisplayOrder);
+generateRandomQuestionIndex(answerDisplayOrder);
 updateProgress();
 updateScore();
 
-
+//Display the current question
 displayQuestion(questionDisplayOrder[progress]);
 
 //Display initial progress numbers
@@ -98,7 +99,7 @@ function updateProgress(){
 
 function updateScore(){
   var scoreDiv = document.getElementById('score-display');
-  scoreDiv.innerText = `Score: ${score}`;
+  scoreDiv.innerText = `Score: ${userResults.score}`;
 }
 
 //Display next question once button is clicked
@@ -114,7 +115,7 @@ answerList.addEventListener('click', function(e){
   var userAnswer = e.target.innerText;
   console.log('***'+quizSet.questions[questionDisplayOrder[progress]].answerArr[0]);
   if(userAnswer === quizSet.questions[questionDisplayOrder[progress]].answerArr[0]){
-    score++;
+    userResults.score++;
     updateScore();
   }
 });
