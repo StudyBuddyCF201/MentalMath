@@ -40,7 +40,16 @@ User.prototype.saveToLocalStorage = function () {
 //parameter userData is parsed JSON from localStorage
 function convertToUserObject(userData){
   //Create a new user with userName
+  var user = new User(userData.userName);
+
   //For each result owned by the user, create a Result
   //object and push it to user.results
-
+  for(var i=0; i < userData.results.length; i++){
+    var result = new Result(userData.results[i].subject);
+    result.score = userData.results[i].score;
+    result.date = userData.results[i].date;
+    result.quizTime = userData.results[i].quizTime;
+    user.results.push(result);
+  }
+  return user;
 }
