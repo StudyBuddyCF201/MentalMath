@@ -1,7 +1,6 @@
 'use strict';
 
 var JSONpresent = JSON.parse(localStorage.getItem('User'));
-var currentUser = convertToUserObject(JSONpresent);
 var nameForm = document.getElementById('usernameform');
 var username = '';
 var selectedQuiz; //used to store name of selected quiz set
