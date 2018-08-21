@@ -40,13 +40,11 @@ var quizSet = quizSetObjects[quizSetName];
 //Generates random number in range [0, 3]
 //pushes the index to shownQuestions and displays question/answers in div
 function generateRandomQuestionIndex(){
-  console.log(quizSet.questions.length);
   for(var i=0; i < quizSet.questions.length; i++){
     do{
       var randIndex = Math.floor(Math.random() * quizSet.questions.length);
     }while(questionDisplayOrder.includes(randIndex));
     //add random number to questionDisplayOrder array
-    console.log(randIndex);
     questionDisplayOrder.push(randIndex);
   }
 }
