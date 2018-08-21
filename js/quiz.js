@@ -6,6 +6,7 @@ var subtraction = new QuizSet('subtraction', []);
 var division = new QuizSet('division', []);
 
 var progress = 0;
+var score = 0;
 
 var quizSets = [addition, subtraction, division];
 
@@ -22,9 +23,6 @@ for (var i = 0; i < 3; i++) {
 }
 
 var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'division': division};
-
-//Event handler for clicking on card
-//register correct/incorrect, move to next card, update progress counts
 
 
 
@@ -87,6 +85,7 @@ function displayQuestion(questionIndex){
 // and display the question/answer in the question-back div
 generateRandomQuestionIndex();
 updateProgress();
+updateScore();
 
 
 displayQuestion(questionDisplayOrder[progress]);
@@ -97,9 +96,25 @@ function updateProgress(){
   progressDiv.innerText = `${progress} / ${quizSet.questions.length}`;
 }
 
+function updateScore(){
+  var scoreDiv = document.getElementById('score-display');
+  scoreDiv.innerText = `Score: ${score}`;
+}
+
 //Display next question once button is clicked
 var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
   displayQuestion(questionDisplayOrder[progress]);
 });
 
+//Event handler for clicking on card
+//register correct/incorrect, move to next card, update progress counts
+var answerList = document.getElementById('answer-list');
+answerList.addEventListener('click', function(e){
+  var userAnswer = e.target.innerText;
+  console.log('***'+quizSet.questions[questionDisplayOrder[progress]].answerArr[0]);
+  if(userAnswer === quizSet.questions[questionDisplayOrder[progress]].answerArr[0]){
+    score++;
+    updateScore();
+  }
+});
