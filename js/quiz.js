@@ -32,6 +32,8 @@ var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'divisio
 
 //Get selected quiz name from quizSets (app.js)
 var quizSetName = JSON.parse(localStorage.getItem('selectedQuiz'));
+//Get User from local Storage
+var thisUser = JSON.parse(localStorage.getItem('User'));
 //Stores user results for this quiz
 var userResults = new Result(quizSetName); 
 //Get quiz set object whose name matches quizSetName
@@ -116,6 +118,10 @@ function displayScore(){
 var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
   if(button.innerHTML === 'Results'){
+    //add result object to User results array
+    thisUser.results.push(userResults);
+    localStorage.setItem('User', JSON.stringify(thisUser));
+    //redirect to results.html
     window.location.href = 'results.html';
   } else {
     displayQuestion(questionDisplayOrder[progress-1]);
