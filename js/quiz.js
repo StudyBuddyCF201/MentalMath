@@ -71,15 +71,35 @@ function displayQuestion(questionIndex){
   //Add answer to back of card
   var cardBack = document.getElementById('answer');
   cardBack.innerText = quizSet.questions[questionIndex].answerArr[0];
+
+  var button = document.getElementById('card-button');
+  if(progress < questionDisplayOrder.length-1){
+    button.innerText = 'Next';
+  }else{
+    button.innerText = 'Results';
+  }
+  progress++;
+  updateProgress();
 }
 
 
 //On page load, display the first question
 // and display the question/answer in the question-back div
 generateRandomQuestionIndex();
-displayQuestion(0);
+updateProgress();
+
+
+displayQuestion(questionDisplayOrder[progress]);
 
 //Display initial progress numbers
-var progressDiv = document.getElementById('top-progress-display');
-progressDiv.innerText = `${progress} / ${quizSet.questions.length}`;
+function updateProgress(){
+  var progressDiv = document.getElementById('top-progress-display');
+  progressDiv.innerText = `${progress} / ${quizSet.questions.length}`;
+}
+
+//Display next question once button is clicked
+var button = document.getElementById('card-button');
+button.addEventListener('click', function(){
+  displayQuestion(questionDisplayOrder[progress]);
+});
 
