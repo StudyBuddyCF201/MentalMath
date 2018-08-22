@@ -115,9 +115,11 @@ function displayScore(){
   scoreDiv.innerText = `Score: ${userResult.score}`;
 }
 
+var flip = document.getElementsByClassName('flipper')[0];
 //Handler on button to display next question once button is clicked
 var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
+  flip.classList.toggle('is-flipped');
   if(button.innerHTML === 'Results'){
     //add result object to User results array
     thisUser.results.push(userResult);
@@ -132,7 +134,9 @@ button.addEventListener('click', function(){
 //Event handler for registering correct/incorrect on card click.
 //Updates user score
 var answerList = document.getElementById('answer-list');
+
 answerList.addEventListener('click', function(e){
+  flip.classList.toggle('is-flipped');
   if(e.target.dataset.value === 'true'){
     userResult.score++;
   }

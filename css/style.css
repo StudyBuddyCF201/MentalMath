@@ -95,11 +95,15 @@ label, .formOrGreeting p {
 .flip-container {
   perspective: 1000px;
 }
-	/* flip the pane when hovered */
-	.flip-container:hover .flipper, .flip-container.hover .flipper {
-    transform: rotateX(-180deg);
-    transform-origin: 100% 150px;
-	}
+/* flip the pane when hovered */
+/* .flip-container:active .flipper {
+  transform: rotateX(-180deg);
+  transform-origin: 100% 150px;
+} */
+.is-flipped{
+  transform: rotateX(-180deg);
+  transform-origin: 100% 150px;
+}
 
 .flip-container, .card-front, .card-back {
 	width: 500px;
