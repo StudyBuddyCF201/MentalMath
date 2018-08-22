@@ -17,8 +17,6 @@ ol {
   list-style: decimal;
   list-style-position: inside;
   /* margin-right: 20px; */
-
-
 }
 
 li ::before {
@@ -30,3 +28,4 @@ li a {
   font-size: 20px;
   list-style-type: upper-latin;
 }
+

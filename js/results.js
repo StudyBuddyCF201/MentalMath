@@ -31,3 +31,32 @@ for(var i = 0; i < userData.results.length; i++){
     Date: ${userData.results[i]['date']}`;
   listOnPage.appendChild(resultList);
 }
+
+//got this chart.js code from this here: https://www.chartjs.org/docs/latest/charts/scatter.html
+var ctx = document.getElementById('myChart');
+var myChart = new myChart(ctx, {
+  type: 'scatter',
+  data: {
+    datasets: [{
+      labels: 'Scatter Dataset',
+      data: [{
+        x: -10,
+        y: 0   
+      }, {
+        x: 0,
+        y: 10
+      }, {
+        x: 10,
+        y:5
+      }]
+    }]
+  },
+  options : {
+    scales: {
+      xAxes: [{
+        type: 'linear',
+        position: 'bottom'
+      }]
+    }
+  } 
+});
