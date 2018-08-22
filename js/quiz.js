@@ -25,7 +25,7 @@ var questionsToDisplayCount = 10; //Indicates number of questions to display in 
 
 
 
-var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'multiplication': multiplication};
+// var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'multiplication': multiplication};
 
 
 /*****************************************************************
@@ -81,7 +81,7 @@ function makeMultiplicationQuestions(){
 
 
 //Creates quiz set for the selected quiz
-function createQuizSet(quizName, questions){
+function loadQuestionsIntoQuizSet(quizName, questions){
   for (var j = 0; j < questionsToDisplayCount; j++) {
     quizName.addQuestion(questions[j][0], questions[j][1]);
   }
@@ -90,10 +90,10 @@ function createQuizSet(quizName, questions){
 
 //Generates random number in range 0 to the length of the question array
 //pushes the index to shownQuestions and displays question/answers in div
-function generateRandomIndexOrder(arr){
-  for(var i=0; i < questionsToDisplayCount; i++){
+function generateRandomIndexOrder(arr, size){
+  for(var i=0; i < size; i++){
     do{
-      var randIndex = Math.floor(Math.random() * quizSet.questions.length);
+      var randIndex = Math.floor(Math.random() * size);
     }while(arr.includes(randIndex));
     //add random number to questionDisplayOrder array
     arr.push(randIndex);
@@ -154,7 +154,6 @@ function displayScore(){
   scoreDiv.innerText = `Score: ${userResult.score}`;
 }
 
-
 //Adds score footer update
 function updateScoreFooter(){
   var wrongScoreText = document.getElementById('wrong');
@@ -172,7 +171,7 @@ var userResult = new Result(quizSetName);
 
 //Create quiz set object whose name matches quizSetName
 var quizSet = new QuizSet(quizSetName, []);
-var questions; 
+var questions;
 
 //Generate quiz questions and add the to the quiz set
 if(quizSetName === 'addition'){
@@ -183,10 +182,13 @@ if(quizSetName === 'addition'){
   questions = makeMultiplicationQuestions();
 }
 
+//Load questions into quiz set
+loadQuestionsIntoQuizSet(quizSet, questions);
+
 //On page load, display the first question
 // and display the question/answer in the question-back div
-generateRandomIndexOrder(questionDisplayOrder);
-generateRandomIndexOrder(answerDisplayOrder);
+generateRandomIndexOrder(questionDisplayOrder, questionsToDisplayCount);
+generateRandomIndexOrder(answerDisplayOrder, 3);
 displayProgress();
 displayScore();
 
@@ -194,9 +196,13 @@ displayScore();
 displayQuestion(questionDisplayOrder[progress-1]);
 
 
+//Get flipper element from DOM
+var flip = document.getElementsByClassName('flipper')[0];
+
 //Handler on button to display next question once button is clicked
 var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
+  flip.classList.toggle('is-flipped');
   if(button.innerHTML === 'Results'){
     //add result object to User results array
     thisUser.results.push(userResult);
@@ -211,7 +217,9 @@ button.addEventListener('click', function(){
 //Event handler for registering correct/incorrect on card click.
 //Updates user score
 var answerList = document.getElementById('answer-list');
+
 answerList.addEventListener('click', function(e){
+  flip.classList.toggle('is-flipped');
   if(e.target.dataset.value === 'true'){
     userResult.score++;
   }
