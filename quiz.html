@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Page Title</title>
+  <title>MENTAL MATH quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/reset.css" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -12,7 +12,7 @@
 </head>
 <body>
   <nav>
-    <h1>STUDY BUDDY</h1>
+    <h1>MENTAL MATH</h1>
     <ul>
       <li><a href = "index.html"> Home </a></li>
       <li><a href = "about.html"> About Us </a></li>
@@ -20,11 +20,13 @@
     </ul>
   </nav>
   <div id="top-progress-display"><!--Progress display-->
-  </div>
-  <div id="score-display">
-  </div> 
-  <!--End of progress display div-->
-
+  </div>  <!--End of progress display div-->
+  <div><!--Counter display-->
+    <p id="time-display">
+      0 seconds
+    </p> 
+    <button id="display-counter">Hide Counter</button>
+  </div><!--end of counter display-->
   <div class ="flip-container">
     <div class = "flipper">  
      <div class="card-front"><!--Question-front div-->
@@ -42,7 +44,6 @@
         </li>
       </ul>
     </div><!--End of question-front div-->
-    
     <div class="card-back"><!--Question-back div-->
       <p id="question-back">
       </p>
@@ -56,14 +57,14 @@
     <div class="progress">
       <h2 class="progress scores" id="wrong">
       </h2>
-      <img src="img/cross-42928_1280.png" alt="x mark">
+      <img src="img/cross-42928_1280.png" alt="x mark" id="x-mark">
     </div>
     <div class="card-stack">
     </div>
     <div class="progress">
       <h2 class="progress scores" id="right">
       </h2>
-      <img src="img/check-mark-1292787_1280.png" alt="check mark">
+      <img src="img/check-mark-1292787_1280.png" alt="check mark" id="check-mark">
     </div>
   </footer>
   <script src="js/app.js"></script>
