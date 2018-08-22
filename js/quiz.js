@@ -27,7 +27,6 @@ function makeAdditionQuestions(){
   //Create a question array container
   var questions = [];
   for(var i=0; i < 10; i++){
-    console.log(i);
     //Create a question array
     var question = [];
     //Create an answer array container
@@ -49,7 +48,6 @@ function makeSubtractionQuestions(){
   //Create a question array container
   var questions = [];
   for(var i=0; i < 10; i++){
-    console.log(i);
     //Create a question array
     var question = [];
     //Create an answer array container
@@ -72,7 +70,6 @@ function makeMultiplicationQuestions(){
   //Create a question array container
   var questions = [];
   for(var i=0; i < 10; i++){
-    console.log(i);
     //Create a question array
     var question = [];
     //Create an answer array container
