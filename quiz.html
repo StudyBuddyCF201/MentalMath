@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>MENTAL MATH quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/reset.css" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <link rel="stylesheet" type="text/css" href="css/quiz.css" />
@@ -18,14 +19,16 @@
       <li><a href = "results.html"> Results </a></li>
     </ul>
   </nav>
-  <div id="top-progress-display"><!--Progress display-->
-  </div>  <!--End of progress display div-->
-  <div><!--Counter display-->
+
+  <div class="timer"><!--Counter display-->
     <p id="time-display">
       0 seconds
     </p> 
     <button id="display-counter">Hide Counter</button>
   </div><!--end of counter display-->
+  <div id="progressBar">
+    <div id="barStatus"></div>
+  </div>
   <section>
     <div class="progress">
       <h2 class="progress scores" id="wrong">
