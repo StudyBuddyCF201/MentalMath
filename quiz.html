@@ -24,27 +24,34 @@
   <div id="score-display">
   </div> 
   <!--End of progress display div-->
-  <div class="card-front"><!--Question-front div-->
-    <p id="question-front">
-    </p>
-    <ul id="answer-list">
-      <li id="a1">
-        <img>
-      </li>
-      <li id="a2">
-        <img>
-      </li>
-      <li id="a3">
-        <img>
-      </li>
-    </ul>
-  </div><!--End of question-front div-->
-  <div class="card-back"><!--Question-back div-->
-    <p id="question-back">
-    </p>
-    <p id="answer"></p>
-    <button id="card-button"></button>
-  </div><!--End of question-back div-->
+
+  <div class ="flip-container">
+    <div class = "flipper">  
+     <div class="card-front"><!--Question-front div-->
+      <p id="question-front">
+      </p>
+      <ul id="answer-list">
+        <li id="a1">
+          <img>
+        </li>
+        <li id="a2">
+          <img>
+        </li>
+        <li id="a3">
+          <img>
+        </li>
+      </ul>
+    </div><!--End of question-front div-->
+    
+    <div class="card-back"><!--Question-back div-->
+      <p id="question-back">
+      </p>
+      <p id="answer"></p>
+      <button id="card-button"></button>
+    </div><!--End of question-back div-->
+   </div><!--End of flipper div-->
+  </div><!--End of flipper-container div-->
+  
   <footer>
     <div class="progress">
       <h2 class="progress scores" id="wrong">
