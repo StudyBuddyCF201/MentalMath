@@ -35,22 +35,11 @@ li a {
   font-size: 20px;
 }
 
-.cards {
-  max-width: 100%;
-  border: 2px solid black;
-  padding: 0 30px 50px 30px;
-  text-align: center;
-}
-
-.card {
-  max-width: 80px;
-  
-}
-
 img{
   max-width: 200px;
 }
 
+<<<<<<< HEAD
 figure {
   display: inline-block;
   margin: 50px;
@@ -179,3 +168,5 @@ footer{
   text-align: center;
 
 }
+=======
+>>>>>>> master
