@@ -4,10 +4,28 @@
   margin: 20px auto;
 }
 
+ul {
+  text-decoration: brown;
+  list-style-type: circle;
+  display: flex;
+  flex: wrap;
+}
+
 li {
   width: 75%;
-  /* text-decoration: brown; */
+  text-decoration: brown; 
   list-style-type: upper-latin;
   list-style: circle;
   display: inline-block;
+}
+
+li ::before {
+  color: black;
+}
+
+
+li a {
+  font-size: 20px;
+  text-decoration: brown; 
+  list-style-type: upper-latin;
 }
