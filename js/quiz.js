@@ -35,7 +35,7 @@ var quizSetName = JSON.parse(localStorage.getItem('selectedQuiz'));
 //Get User from local Storage
 var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
 //Stores user results for this quiz
-var userResult = new Result(quizSetName); 
+var userResult = new Result(quizSetName);
 //Get quiz set object whose name matches quizSetName
 var quizSet = quizSetObjects[quizSetName];
 
@@ -88,6 +88,7 @@ function displayQuestion(index){
     nextButton.innerHTML = 'Results';
   }
   displayProgress();
+  updateScoreFooter();
 }
 
 
@@ -126,16 +127,25 @@ button.addEventListener('click', function(){
   } else {
     displayQuestion(questionDisplayOrder[progress-1]);
   }
-  
 });
 
 //Event handler for registering correct/incorrect on card click.
 //Updates user score
 var answerList = document.getElementById('answer-list');
 answerList.addEventListener('click', function(e){
-  console.log(userResult.score);
   if(e.target.dataset.value === 'true'){
     userResult.score++;
-    displayScore();
   }
+  else{
+    userResult.wrong++;
+  }
+  displayScore();
 });
+
+//Adds score footer update
+function updateScoreFooter(){
+  var wrongScoreText = document.getElementById('wrong');
+  var rightScoreText = document.getElementById('right');
+  rightScoreText.innerText = userResult.score;
+  wrongScoreText.innerText = userResult.wrong;
+}
