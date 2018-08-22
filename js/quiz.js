@@ -33,9 +33,9 @@ var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'divisio
 //Get selected quiz name from quizSets (app.js)
 var quizSetName = JSON.parse(localStorage.getItem('selectedQuiz'));
 //Get User from local Storage
-var thisUser = JSON.parse(localStorage.getItem('User'));
+var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
 //Stores user results for this quiz
-var userResults = new Result(quizSetName); 
+var userResult = new Result(quizSetName);
 //Get quiz set object whose name matches quizSetName
 var quizSet = quizSetObjects[quizSetName];
 
@@ -88,6 +88,7 @@ function displayQuestion(index){
     nextButton.innerHTML = 'Results';
   }
   displayProgress();
+  updateScoreFooter();
 }
 
 
@@ -111,7 +112,7 @@ function displayProgress(){
 //Display score at top of page
 function displayScore(){
   var scoreDiv = document.getElementById('score-display');
-  scoreDiv.innerText = `Score: ${userResults.score}`;
+  scoreDiv.innerText = `Score: ${userResult.score}`;
 }
 
 //Handler on button to display next question once button is clicked
@@ -119,24 +120,32 @@ var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
   if(button.innerHTML === 'Results'){
     //add result object to User results array
-    thisUser.results.push(userResults);
+    thisUser.results.push(userResult);
     localStorage.setItem('User', JSON.stringify(thisUser));
     //redirect to results.html
     window.location.href = 'results.html';
   } else {
     displayQuestion(questionDisplayOrder[progress-1]);
   }
-  
 });
 
 //Event handler for registering correct/incorrect on card click.
 //Updates user score
-//FIX THIS
 var answerList = document.getElementById('answer-list');
 answerList.addEventListener('click', function(e){
-  console.log(userResults.score);
   if(e.target.dataset.value === 'true'){
-    userResults.score++;
-    displayScore();
+    userResult.score++;
   }
+  else{
+    userResult.wrong++;
+  }
+  displayScore();
 });
+
+//Adds score footer update
+function updateScoreFooter(){
+  var wrongScoreText = document.getElementById('wrong');
+  var rightScoreText = document.getElementById('right');
+  rightScoreText.innerText = userResult.score;
+  wrongScoreText.innerText = userResult.wrong;
+}
