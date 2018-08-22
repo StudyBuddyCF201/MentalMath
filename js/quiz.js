@@ -230,7 +230,7 @@ button.addEventListener('click', function(){
     thisUser.results.push(userResult);
     localStorage.setItem('User', JSON.stringify(thisUser));
     //redirect to results.html
-    // window.location.href = 'results.html';
+    window.location.href = 'results.html';
   } else {
     displayQuestion(questionDisplayOrder[progress-1]);
   }
