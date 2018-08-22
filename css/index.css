@@ -1,9 +1,8 @@
 figure {
   display: inline-block;
   margin: 50px;
-  min-width: 200px;
+  min-width: 187px;
   text-align: center;
-  outline: 1px solid black;
 }
 
 .cards {
