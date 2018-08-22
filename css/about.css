@@ -12,15 +12,48 @@ h2{
   margin-bottom: 5px;
   font-size: 20px;
   font-weight: bold;
+  padding-top: 100px;
 }
 
-p{
-  width: 65%;
-  outline: 2px blue dotted;
-  display: inline;
+h2 {
+  margin-bottom: -115px;
 }
 
-.about_main{
+p {
+  padding-top: 100px;
+  margin-top: -115px;
+}
+
+p.left {
+  padding-right: 20px;
+}
+
+p.right{
+  padding-left: 20px;
+}
+
+h2{
+  display: inline-block;
   text-align: center;
-  width: auto;
+  width: 100%;
 }
+
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 300px;
+}
+
+.flex p{
+  flex: 2;
+  min-width: 100px;
+}
+
+.flex img{
+  max-width: 30%;
+  margin-top: -115px;
+  flex: 1;
+  border-radius: 50% 50%;
+  align-self: center;
+}
+
