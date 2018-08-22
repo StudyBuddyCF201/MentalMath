@@ -1,22 +1,24 @@
 .results{
   width: 100%;
   height: 100%;
-  margin: 20px auto;
+  margin: 10px 10px;
 }
 
 ol {
   text-decoration: black;
-  list-style-type: upper-latin;
+  list-style-type: lower-roman;
   list-style-position: inside;
-  list-style: circle;
-  display: flex;
-  flex: wrap;
 }
 
-ol li {
+#load_scores li{
+  margin-bottom: 25px;
   width: 75%;
-  text-decoration: brown; 
-  display: inline-block;
+  text-decoration: black;
+  list-style: decimal;
+  list-style-position: inside;
+  /* margin-right: 20px; */
+
+
 }
 
 li ::before {
@@ -26,6 +28,5 @@ li ::before {
 
 li a {
   font-size: 20px;
-  text-decoration: brown; 
   list-style-type: upper-latin;
 }
