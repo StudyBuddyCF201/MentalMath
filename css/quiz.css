@@ -56,7 +56,7 @@ footer{
 .progress{
   display: inline-block;
   vertical-align: top;
-  margin: 50px 10px;
+  margin: 30px 30px;
 }
 
 .progress img{
@@ -78,8 +78,9 @@ footer{
   font-size: 60px;
 }
 
-#x-mark {
-  min-height: 196px;
+#x-mark, #check-mark {
+  min-height: 150px;
+  max-height: 175px;
 }
 
 #wrong, #right{
