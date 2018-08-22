@@ -1,26 +1,26 @@
 .about{
   margin-top: 50px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 40px;
+  text-align: left;
+  width: 100%;
 }
 
-.about h2{
+h2{
   display: inline-block;
   margin-bottom: 5px;
   font-size: 20px;
   font-weight: bold;
 }
 
-.about div{
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 40px;
-  text-align: left;
-}
-
-.about p{
-  max-width: 500px;
+p{
+  width: 65%;
+  outline: 2px blue dotted;
+  display: inline;
 }
 
 .about_main{
   text-align: center;
-
+  width: auto;
 }
