@@ -3,7 +3,8 @@
   perspective: 1000px;
   margin: 50px auto;
   display: inline-block;
-  font-size: 25px;
+  font-size: 40px;
+  font-family: 'Indie Flower', cursive;
 }
 /* flip the pane when clicked */
 
@@ -13,7 +14,7 @@
 }
 
 .flip-container, .card-front, .card-back {
-	width: 500px;
+	width: 491px;
 	height: 300px;
 }
 
@@ -55,7 +56,7 @@ footer{
 .progress{
   display: inline-block;
   vertical-align: top;
-  margin: 50px 10px;
+  margin: 30px 30px;
 }
 
 .progress img{
@@ -71,49 +72,26 @@ footer{
   display: inline-block;
 
 }
-.about{
-  margin-top: 50px;
-}
-
-.about h2{
-  display: inline-block;
-  margin-bottom: 5px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.about div{
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 40px;
-  text-align: left;
-}
-
-.about p{
-  max-width: 500px;
-}
-
-.about_main{
-  text-align: center;
-}
 
 #question-front, #question-back{
-  margin: 30px 0;
-  font-size: 40px;
+  margin: 30px 0 10px 0;
+  font-size: 60px;
 }
 
-#x-mark {
-  min-height: 196px;
+#x-mark, #check-mark {
+  min-height: 150px;
+  max-height: 175px;
 }
 
 #wrong, #right{
   font-size: 30px;
 }
 
-#a1, #a2, #a3{
+div #a1, #a2, #a3{
   display: block;
   text-align: left;
-  padding: 15px 30px;
+  padding: 5px 30px;
+  margin-top: 0px;
 }
 
 .enlarge{
@@ -148,4 +126,24 @@ footer{
   80% { transform: translate(-2px, -2px) rotate(2deg); }
   90% { transform: translate(2px, 4px) rotate(0deg); }
   100% { transform: translate(2px, -4px) rotate(-2deg); }
+}
+
+#progressBar {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #ddd;
+}
+
+#barStatus {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background-color: rgb(254, 204, 27);
+}
+
+.timer {
+  font-size: 30px;
+  text-align: center;
+  padding: 10px 0;
 }

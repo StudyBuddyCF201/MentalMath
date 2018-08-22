@@ -150,9 +150,8 @@ function displayQuestion(index){
 
 //Display progress counter at top of page
 function displayProgress(){
-  var progressDiv = document.getElementById('top-progress-display');
-  progressDiv.innerText = `${progress} / ${quizSet.questions.length}`;
   progress++;
+  move();
 }
 
 
@@ -270,3 +269,12 @@ counterDisplayButton.addEventListener('click', function(e){
     counter.style.visibility = 'visible';
   }
 });
+
+
+var width = 0;
+function move() {
+  var elem = document.getElementById('barStatus');
+  width += 10;
+  elem.style.width = width + '%';
+
+}
