@@ -1,10 +1,12 @@
 'use strict';
 
+startTimer();
+
 var questionDisplayOrder = []; //Tracks order of question indices for display
 var progress = 0; //Tracks user progress through quiz deck
 var questionsToDisplayCount = 10; //Indicates number of questions to display in the deck
-
-
+var timer; //used to track elapsed quiz time
+var seconds = 0;
 
 /*****************************************************************
  *                   Get User info from LocalStorage
@@ -138,7 +140,6 @@ function displayQuestion(index){
   //Set button text to 'next' or 'results' depending on
   //where the user is in the deck
   var nextButton = document.getElementById('card-button');
-  console.log(`questionDisplayOrder ${questionDisplayOrder.length}, progress: ${progress}`);
   if(progress <= (questionDisplayOrder.length-1)){
     nextButton.innerHTML = 'Next';
   }else{
@@ -155,12 +156,6 @@ function displayProgress(){
 }
 
 
-//Display score at top of page
-function displayScore(){
-  var scoreDiv = document.getElementById('score-display');
-  scoreDiv.innerText = `Score: ${userResult.score}`;
-}
-
 //Adds score footer update
 function updateScoreFooter(){
   var wrongScoreText = document.getElementById('wrong');
@@ -170,10 +165,26 @@ function updateScoreFooter(){
 }
 
 
+//Creates timer (in seconds) at top of page
+function startTimer(){
+  timer = setInterval(function(){
+    seconds++;
+    document.getElementById('time-display').innerText = `${seconds} seconds`;
+  }, 1000);
+}
+
+
+//Stops timer and returns end time
+function stopTimer(){
+  clearInterval(timer);
+}
+
 
 /*****************************************************************
  *            Main page execution and event handlers
  ****************************************************************/
+
+
 //Stores user results for this quiz
 var userResult = new Result(quizSetName);
 
@@ -197,7 +208,6 @@ loadQuestionsIntoQuizSet(quizSet, questions);
 // and display the question/answer in the question-back div
 generateRandomIndexOrder(questionDisplayOrder, questionsToDisplayCount);
 displayProgress();
-displayScore();
 
 //Display the current question
 displayQuestion(questionDisplayOrder[progress-1]);
@@ -211,11 +221,14 @@ var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
   flip.classList.toggle('is-flipped');
   if(button.innerHTML === 'Results'){
+    //Stop timer, add time to results object
+    stopTimer();
+    userResult.quizTime = seconds;
     //add result object to User results array
     thisUser.results.push(userResult);
     localStorage.setItem('User', JSON.stringify(thisUser));
     //redirect to results.html
-    window.location.href = 'results.html';
+    // window.location.href = 'results.html';
   } else {
     displayQuestion(questionDisplayOrder[progress-1]);
   }
@@ -234,6 +247,20 @@ answerList.addEventListener('click', function(e){
     userResult.wrong++;
   }
   displayProgress();
-  displayScore();
   updateScoreFooter();
+});
+
+//Event handler that allow the user to hide/show the
+//time elapsed counter
+var counterDisplayButton = document.getElementById('display-counter');
+counterDisplayButton.addEventListener('click', function(e){
+  var counter = document.getElementById('time-display');
+  if(e.target.innerText === 'Hide Counter'){
+    e.target.innerText = 'Show Counter';
+    counter.style.visibility = 'hidden';
+  }
+  else{
+    e.target.innerText = 'Hide Counter';
+    counter.style.visibility = 'visible';
+  }
 });
