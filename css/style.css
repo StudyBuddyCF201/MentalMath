@@ -87,3 +87,21 @@ label, .formOrGreeting p {
   padding-top: 0px;
   margin-top: -10px;
 }
+
+footer{
+  text-align: center;
+}
+
+.progress{
+  display: inline-block;
+}
+
+.progress img{
+  display: block;
+}
+
+
+.card-stack{
+  width: 300px;
+  display: inline-block;
+}
