@@ -87,3 +87,53 @@ label, .formOrGreeting p {
   padding-top: 0px;
   margin-top: -10px;
 }
+
+
+
+/*-----------------Quiz CSS --------------------*/
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateX(-180deg);
+    transform-origin: 100% 150px;
+	}
+
+.flip-container, .card-front, .card-back {
+	width: 500px;
+	height: 300px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.5s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide card-back of pane during swap */
+.card-front, .card-back {
+	backface-visibility: hidden;
+
+	position: absolute;
+  top: 49%;
+  left: 30%;
+}
+
+/* card-front pane, placed above back */
+.card-front {
+	z-index: 2;
+	/* for firefox 31 */
+  transform: rotateY(0deg);
+  background-color: blueviolet;
+}
+
+/* back, initially hidden pane */
+.card-back {
+  transform: rotateX(-180deg);
+  background-color: red;
+}
