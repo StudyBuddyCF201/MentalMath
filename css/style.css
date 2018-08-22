@@ -135,6 +135,7 @@ label, .formOrGreeting p {
 .card-back {
   transform: rotateX(-180deg);
   background-color: red;
+}
 
 footer{
   text-align: center;
