@@ -1,7 +1,8 @@
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
-  margin: 0 auto;
+  margin: 50px auto;
+  display: inline-block;
 }
 /* flip the pane when clicked */
 
@@ -42,23 +43,71 @@
   background-image: url('../img/blank-index-card.jpg');
 }
 
+section{
+  text-align: center;
+}
+
 footer{
   text-align: center;
 }
 
 .progress{
   display: inline-block;
+  vertical-align: top;
+  margin-top: 50px;
 }
 
 .progress img{
-  display: block;
+  display: inline-block;
 }
 
+.progress h2{
+  display: block;
+}
 
 .card-stack{
   width: 300px;
   display: inline-block;
 
+}
+.about{
+  margin-top: 50px;
+}
+
+.about h2{
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.about div{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 40px;
+  text-align: left;
+}
+
+.about p{
+  max-width: 500px;
+}
+
+.about_main{
+  text-align: center;
+}
+
+#x-mark {
+  min-height: 196px;
+}
+
+#wrong, #right{
+  font-size: 30px;
+}
+
+#a1, #a2, #a3{
+  display: block;
+  text-align: left;
+  padding: 25px 30px;
 }
 
 .enlarge{
