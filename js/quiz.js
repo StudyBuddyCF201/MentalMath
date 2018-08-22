@@ -1,7 +1,6 @@
 'use strict';
 
 var questionDisplayOrder = []; //Tracks order of question indices for display
-var answerDisplayOrder = []; //Tracks order of answer indices for display
 var progress = 0; //Tracks user progress through quiz deck
 var questionsToDisplayCount = 10; //Indicates number of questions to display in the deck
 
@@ -12,7 +11,6 @@ var questionsToDisplayCount = 10; //Indicates number of questions to display in 
  ****************************************************************/
 //Get selected quiz name from quizSets (app.js)
 var quizSetName = JSON.parse(localStorage.getItem('selectedQuiz'));
-
 //Get User from local Storage
 var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
 
@@ -42,6 +40,7 @@ function makeAdditionQuestions(){
   }
   return questions;
 }
+
 
 //Generate 10 subtraction questions
 function makeSubtractionQuestions(){
@@ -110,6 +109,9 @@ function generateRandomIndexOrder(arr, size){
 
 //Display Question
 function displayQuestion(index){
+  //Get answer display order
+  var answerDisplayOrder = []; //Tracks order of answer indices for display
+  generateRandomIndexOrder(answerDisplayOrder, 3);
   //Add question to front and back of card
   var questionDivFront = document.getElementById('question-front');
   questionDivFront.innerText = quizSet.questions[index].question;
@@ -142,8 +144,6 @@ function displayQuestion(index){
   }else{
     nextButton.innerHTML = 'Results';
   }
-  displayProgress();
-  updateScoreFooter();
 }
 
 
@@ -196,7 +196,6 @@ loadQuestionsIntoQuizSet(quizSet, questions);
 //On page load, display the first question
 // and display the question/answer in the question-back div
 generateRandomIndexOrder(questionDisplayOrder, questionsToDisplayCount);
-generateRandomIndexOrder(answerDisplayOrder, 3);
 displayProgress();
 displayScore();
 
@@ -234,5 +233,7 @@ answerList.addEventListener('click', function(e){
   else{
     userResult.wrong++;
   }
+  displayProgress();
   displayScore();
+  updateScoreFooter();
 });
