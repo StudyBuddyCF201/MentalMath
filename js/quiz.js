@@ -5,27 +5,6 @@ var answerDisplayOrder = []; //Tracks order of answer indices for display
 var progress = 0; //Tracks user progress through quiz deck
 var questionsToDisplayCount = 10; //Indicates number of questions to display in the deck
 
-/*****************************************************************
- *                     Create Quiz Sets
- ****************************************************************/
-//Create quiz sets
-// var addition = new QuizSet('addition', []);
-// var subtraction = new QuizSet('subtraction', []);
-// var multiplication = new QuizSet('multiplication', []]);
-
-// //Quiz set containers
-// var quizSets = [addition, subtraction, multiplication];
-
-
-// var additionQuestions = [
-//   ['This is a question?', ['yes', 'no', 'maybe']],
-//   ['This is yet another question?', ['y', 'n', 'm']],
-//   ['This is a third question?', ['YES', 'NO', 'MAYBE']],
-// ];
-
-
-
-// var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'multiplication': multiplication};
 
 
 /*****************************************************************
@@ -36,9 +15,6 @@ var quizSetName = JSON.parse(localStorage.getItem('selectedQuiz'));
 
 //Get User from local Storage
 var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
-
-
-
 
 
 
@@ -70,13 +46,47 @@ function makeAdditionQuestions(){
 
 //Generate 10 subtraction questions
 function makeSubtractionQuestions(){
-
+  //Create a question array container
+  var questions = [];
+  for(var i=0; i < 10; i++){
+    console.log(i);
+    //Create a question array
+    var question = [];
+    //Create an answer array container
+    var answers = [];
+    var a = Math.floor(Math.random() * 100);
+    var b = Math.floor(Math.random() * 100);
+    question.push(`${a} - ${b}`);
+    answers.push(`${a - b}`);
+    answers.push(`${a - b - 1}`);
+    answers.push(`${a - b + 2}`);
+    question.push(answers);
+    questions.push(question);
+  }
+  return questions;
 }
 
 
 //Generate 10 multiplication questions
 function makeMultiplicationQuestions(){
-
+  //Create a question array container
+  var questions = [];
+  for(var i=0; i < 10; i++){
+    console.log(i);
+    //Create a question array
+    var question = [];
+    //Create an answer array container
+    var answers = [];
+    var a = Math.floor(Math.random() * 10);
+    var b = Math.floor(Math.random() * 10);
+    question.push(`${a} x ${b}`);
+    answers.push(`${a * b}`);
+    answers.push(`${a * b + 1}`);
+    answers.push(`${a * b + 2}`);
+    question.push(answers);
+    questions.push(question);
+  }
+  return questions;
 }
 
 
@@ -161,6 +171,7 @@ function updateScoreFooter(){
   rightScoreText.innerText = userResult.score;
   wrongScoreText.innerText = userResult.wrong;
 }
+
 
 
 /*****************************************************************
