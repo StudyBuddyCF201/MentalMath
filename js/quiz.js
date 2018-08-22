@@ -210,6 +210,8 @@ var flip = document.getElementsByClassName('flipper')[0];
 var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
   flip.classList.toggle('is-flipped');
+  checkMark.classList.remove('enlarge');
+  xMark.classList.remove('shake-wrong');
   if(button.innerHTML === 'Results'){
     //add result object to User results array
     thisUser.results.push(userResult);
@@ -224,14 +226,18 @@ button.addEventListener('click', function(){
 //Event handler for registering correct/incorrect on card click.
 //Updates user score
 var answerList = document.getElementById('answer-list');
+var xMark = document.getElementById('x-mark');
+var checkMark = document.getElementById('check-mark');
 
 answerList.addEventListener('click', function(e){
   flip.classList.toggle('is-flipped');
   if(e.target.dataset.value === 'true'){
     userResult.score++;
+    checkMark.classList.toggle('enlarge');
   }
   else{
     userResult.wrong++;
+    xMark.classList.toggle('shake-wrong');
   }
   displayProgress();
   displayScore();
