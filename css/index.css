@@ -1,0 +1,47 @@
+figure {
+  display: inline-block;
+  margin: 50px;
+  min-width: 200px;
+  text-align: center;
+  outline: 1px solid black;
+}
+
+.cards {
+  max-width: 100%;
+  border: 2px solid black;
+  padding: 0 30px 50px 30px;
+  text-align: center;
+}
+
+.card {
+  max-width: 80px;
+}
+
+.cards h3 {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+#usernameform {
+  padding: 20px 0;
+  text-align: center;
+}
+
+#usernameform input {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  
+}
+
+label, .formOrGreeting p {
+  font-size: 30px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.formOrGreeting p.notuser {
+  font-size: 15px;
+  padding-top: 0px;
+  margin-top: -10px;
+}
