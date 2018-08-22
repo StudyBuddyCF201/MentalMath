@@ -25,12 +25,12 @@ ul {
 }
 
 li {
-  display: inline-block;
   margin: 10px 1%;
   width: 32%;
 }
 
 li a {
+  display: inline-block;
   text-decoration: none;
   font-size: 20px;
 }
@@ -39,3 +39,134 @@ img{
   max-width: 200px;
 }
 
+<<<<<<< HEAD
+figure {
+  display: inline-block;
+  margin: 50px;
+  min-width: 200px;
+  text-align: center;
+  outline: 1px solid black;
+}
+
+.cards h3 {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+#usernameform {
+  padding: 20px 0;
+  text-align: center;
+}
+
+#usernameform input {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  
+}
+
+label, .formOrGreeting p {
+  font-size: 30px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.formOrGreeting p.notuser {
+  font-size: 15px;
+  padding-top: 0px;
+  margin-top: -10px;
+}
+
+
+/*-----------------Quiz CSS --------------------*/
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+  margin: 0 auto;
+}
+/* flip the pane when clicked */
+
+.is-flipped{
+  transform: rotateX(-180deg);
+  transform-origin: 100% 150px;
+}
+
+.flip-container, .card-front, .card-back {
+	width: 500px;
+	height: 300px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.5s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+/* hide card-back of pane during swap */
+.card-front, .card-back {
+	backface-visibility: hidden;
+  position: absolute;
+}
+
+/* card-front pane, placed above back */
+.card-front {
+	z-index: 2;
+	/* for firefox 31 */
+  transform: rotateY(0deg);
+  background-image: url('../img/blank-index-card.jpg');
+}
+
+/* back, initially hidden pane */
+.card-back {
+  transform: rotateX(-180deg);
+  background-image: url('../img/blank-index-card.jpg');
+}
+
+footer{
+  text-align: center;
+}
+
+.progress{
+  display: inline-block;
+}
+
+.progress img{
+  display: block;
+}
+
+
+.card-stack{
+  width: 300px;
+  display: inline-block;
+
+}
+.about{
+  margin-top: 50px;
+}
+
+.about h2{
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.about div{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 40px;
+  text-align: left;
+}
+
+.about p{
+  max-width: 500px;
+}
+
+.about_main{
+  text-align: center;
+
+}
+=======
+>>>>>>> master
