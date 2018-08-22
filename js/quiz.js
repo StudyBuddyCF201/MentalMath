@@ -2,48 +2,96 @@
 
 var questionDisplayOrder = []; //Tracks order of question indices for display
 var answerDisplayOrder = []; //Tracks order of answer indices for display
-
-//Create quiz sets
-var addition = new QuizSet('addition', []);
-var subtraction = new QuizSet('subtraction', []);
-var division = new QuizSet('division', []);
-
 var progress = 0; //Tracks user progress through quiz deck
+var questionsToDisplayCount = 10; //Indicates number of questions to display in the deck
+
+/*****************************************************************
+ *                     Create Quiz Sets
+ ****************************************************************/
+//Create quiz sets
+// var addition = new QuizSet('addition', []);
+// var subtraction = new QuizSet('subtraction', []);
+// var multiplication = new QuizSet('multiplication', []]);
+
+// //Quiz set containers
+// var quizSets = [addition, subtraction, multiplication];
 
 
-//Quiz set containers
-var quizSets = [addition, subtraction, division];
+// var additionQuestions = [
+//   ['This is a question?', ['yes', 'no', 'maybe']],
+//   ['This is yet another question?', ['y', 'n', 'm']],
+//   ['This is a third question?', ['YES', 'NO', 'MAYBE']],
+// ];
 
-var questionInfo = [
-  ['This is a question?', ['yes', 'no', 'maybe']],
-  ['This is yet another question?', ['y', 'n', 'm']],
-  ['This is a third question?', ['YES', 'NO', 'MAYBE']],
-];
 
-for (var i = 0; i < 3; i++) {
-  for (var j = 0; j < 3; j++) {
-    quizSets[i].addQuestion(questionInfo[j][0], questionInfo[j][1]);
+
+var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'multiplication': multiplication};
+
+
+/*****************************************************************
+ *                   Get User info from LocalStorage
+ ****************************************************************/
+//Get selected quiz name from quizSets (app.js)
+var quizSetName = JSON.parse(localStorage.getItem('selectedQuiz'));
+
+//Get User from local Storage
+var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
+
+
+
+
+
+
+/*****************************************************************
+ *                     Function Definitions
+ ****************************************************************/
+
+//Generate 10 addition questions
+function makeAdditionQuestions(){
+  //Create a question array container
+  var questions = [];
+  for(var i=0; i < 10; i++){
+    console.log(i);
+    //Create a question array
+    var question = [];
+    //Create an answer array container
+    var answers = [];
+    var a = Math.floor(Math.random() * 100);
+    var b = Math.floor(Math.random() * 100);
+    question.push(`${a} + ${b}`);
+    answers.push(`${a + b}`);
+    answers.push(`${a + b - 1}`);
+    answers.push(`${a + b + 2}`);
+    question.push(answers);
+    questions.push(question);
+  }
+  return questions;
+}
+
+//Generate 10 subtraction questions
+function makeSubtractionQuestions(){
+
+}
+
+
+//Generate 10 multiplication questions
+function makeMultiplicationQuestions(){
+
+}
+
+
+//Creates quiz set for the selected quiz
+function createQuizSet(quizName, questions){
+  for (var j = 0; j < questionsToDisplayCount; j++) {
+    quizName.addQuestion(questions[j][0], questions[j][1]);
   }
 }
 
-var quizSetObjects = {'addition': addition, 'subtraction': subtraction, 'division': division};
 
-//Even handler to move to results, which saves user results in localStorage
-
-//Get selected quiz name from quizSets (app.js)
-var quizSetName = JSON.parse(localStorage.getItem('selectedQuiz'));
-//Get User from local Storage
-var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
-//Stores user results for this quiz
-var userResult = new Result(quizSetName);
-//Get quiz set object whose name matches quizSetName
-var quizSet = quizSetObjects[quizSetName];
-
-
-//Generates random number in range [0, 3]
+//Generates random number in range 0 to the length of the question array
 //pushes the index to shownQuestions and displays question/answers in div
-function generateRandomQuestionIndex(arr){
-  for(var i=0; i < quizSet.questions.length; i++){
+function generateRandomIndexOrder(arr){
+  for(var i=0; i < questionsToDisplayCount; i++){
     do{
       var randIndex = Math.floor(Math.random() * quizSet.questions.length);
     }while(arr.includes(randIndex));
@@ -92,16 +140,6 @@ function displayQuestion(index){
 }
 
 
-//On page load, display the first question
-// and display the question/answer in the question-back div
-generateRandomQuestionIndex(questionDisplayOrder);
-generateRandomQuestionIndex(answerDisplayOrder);
-displayProgress();
-displayScore();
-
-//Display the current question
-displayQuestion(questionDisplayOrder[progress-1]);
-
 //Display progress counter at top of page
 function displayProgress(){
   var progressDiv = document.getElementById('top-progress-display');
@@ -109,11 +147,52 @@ function displayProgress(){
   progress++;
 }
 
+
 //Display score at top of page
 function displayScore(){
   var scoreDiv = document.getElementById('score-display');
   scoreDiv.innerText = `Score: ${userResult.score}`;
 }
+
+
+//Adds score footer update
+function updateScoreFooter(){
+  var wrongScoreText = document.getElementById('wrong');
+  var rightScoreText = document.getElementById('right');
+  rightScoreText.innerText = userResult.score;
+  wrongScoreText.innerText = userResult.wrong;
+}
+
+
+/*****************************************************************
+ *            Main page execution and event handlers
+ ****************************************************************/
+//Stores user results for this quiz
+var userResult = new Result(quizSetName);
+
+//Create quiz set object whose name matches quizSetName
+var quizSet = new QuizSet(quizSetName, []);
+var questions; 
+
+//Generate quiz questions and add the to the quiz set
+if(quizSetName === 'addition'){
+  questions = makeAdditionQuestions();
+}else if(quizSetName === 'subtraction'){
+  questions = makeSubtractionQuestions();
+}else{
+  questions = makeMultiplicationQuestions();
+}
+
+//On page load, display the first question
+// and display the question/answer in the question-back div
+generateRandomIndexOrder(questionDisplayOrder);
+generateRandomIndexOrder(answerDisplayOrder);
+displayProgress();
+displayScore();
+
+//Display the current question
+displayQuestion(questionDisplayOrder[progress-1]);
+
 
 //Handler on button to display next question once button is clicked
 var button = document.getElementById('card-button');
@@ -141,11 +220,3 @@ answerList.addEventListener('click', function(e){
   }
   displayScore();
 });
-
-//Adds score footer update
-function updateScoreFooter(){
-  var wrongScoreText = document.getElementById('wrong');
-  var rightScoreText = document.getElementById('right');
-  rightScoreText.innerText = userResult.score;
-  wrongScoreText.innerText = userResult.wrong;
-}
