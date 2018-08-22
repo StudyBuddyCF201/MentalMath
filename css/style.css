@@ -94,12 +94,10 @@ label, .formOrGreeting p {
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000px;
+  margin: 0 auto;
 }
-/* flip the pane when hovered */
-/* .flip-container:active .flipper {
-  transform: rotateX(-180deg);
-  transform-origin: 100% 150px;
-} */
+/* flip the pane when clicked */
+
 .is-flipped{
   transform: rotateX(-180deg);
   transform-origin: 100% 150px;
@@ -114,17 +112,13 @@ label, .formOrGreeting p {
 .flipper {
 	transition: 0.5s;
 	transform-style: preserve-3d;
-
 	position: relative;
 }
 
 /* hide card-back of pane during swap */
 .card-front, .card-back {
 	backface-visibility: hidden;
-
-	position: absolute;
-  top: 49%;
-  left: 30%;
+  position: absolute;
 }
 
 /* card-front pane, placed above back */
@@ -132,13 +126,13 @@ label, .formOrGreeting p {
 	z-index: 2;
 	/* for firefox 31 */
   transform: rotateY(0deg);
-  background-color: blueviolet;
+  background-image: url('../img/blank-index-card.jpg');
 }
 
 /* back, initially hidden pane */
 .card-back {
   transform: rotateX(-180deg);
-  background-color: red;
+  background-image: url('../img/blank-index-card.jpg');
 }
 
 footer{
