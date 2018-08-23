@@ -7,6 +7,7 @@ nameForm.addEventListener('submit', function(e){
   e.preventDefault();
 });
 
+
 //Disable link on results-link and only allow user
 //to navigate to results if they have visited before
 var resultsLink = document.getElementById('results-link');

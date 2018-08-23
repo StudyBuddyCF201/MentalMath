@@ -36,6 +36,12 @@ User.prototype.saveToLocalStorage = function () {
   localStorage.setItem('User', JSON.stringify(this));
 };
 
+// Make title into link home
+var title = document.getElementById('titleMM');
+title.addEventListener('click', function(){
+  window.location.href = 'index.html';
+});
+
 //Functions that help convert localStorage data
 //parameter userData is parsed JSON from localStorage
 function convertToUserObject(userData){
