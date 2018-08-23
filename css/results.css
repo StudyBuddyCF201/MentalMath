@@ -1,7 +1,10 @@
 .results{
-  width: 100%;
+  width: 50%;
   height: 100%;
-  margin: 10px 10px;
+  margin: 10px auto;
+  background-color: whitesmoke;
+  opacity: .7;
+  border-radius: 25px;
 }
 
 ol {
@@ -33,5 +36,11 @@ li a {
   width: 75%;
   height: fit-content;
   background:whitesmoke;
+  border-radius: 25px;
   margin: 30px auto;
+}
+
+.results h2{
+  margin: 25px;
+  padding-top: 20px;
 }

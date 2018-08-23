@@ -8,7 +8,7 @@ var listOnPage = document.getElementById('load_scores');
 var thisUser = convertToUserObject(userData);
 
 //Create new element and post in ordered list on results page
-for(var i = 0; i < userData.results.length; i++){
+for(var i = userData.results.length-1; i >= 0; i--){
   var resultList = document.createElement('li');
   resultList.textContent = `Subject: ${userData.results[i]['subject']}, 
     Score: ${userData.results[i]['score']},  
