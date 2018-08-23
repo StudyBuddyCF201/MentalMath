@@ -33,17 +33,25 @@ for(var i = 0; i < userData.results.length; i++){
   listOnPage.appendChild(resultList);
 }
 
-
-var ScatterPlots = [];
+//declare empty arrays for use in chart on results page
+var addPlot = [];
+var subPlot = [];
+var multPlot = [];
 
 
 function PointOnGraph(){
   var userResults =  thisUser.results;
   for(var i = 0; i < userResults.length; i++ ){
     var dataPoint = {};
-    dataPoint.x = userResults[i].score;
-    dataPoint.y = userResults[i].quizTime;
-    ScatterPlots.push(dataPoint);
+    dataPoint.y = userResults[i].score;
+    dataPoint.x = userResults[i].quizTime;
+    if(userResults[i].subject === 'addition'){
+      addPlot.push(dataPoint);
+    }else if(userResults[i].subject === 'subtraction'){
+      subPlot.push(dataPoint);
+    }else{
+      multPlot.push(dataPoint);
+    }
   }
 }
 
@@ -55,12 +63,34 @@ var myChart = new Chart(ctx, {
   type: 'scatter',
   data: {
     datasets: [{
-      label: 'Scatter Dataset',
-      data: ScatterPlots
+      label: 'Addition',
+      data: addPlot,
+      borderColor: '#fbbb40',
+      backgroundColor: '#fecc1b',
+      radius: 4
+    },
+    {
+      label: 'Subtraction',
+      data: subPlot,
+      borderColor: '#004183',
+      backgroundColor: '#5fbdcd',
+      radius: 4
+    },
+    {
+      label: 'Multiplication',
+      data: multPlot,
+      borderColor: '#94301b',
+      backgroundColor: '#4d4d4f',
+      radius: 4
     }]
   },
   options: {
     scales: {
+      yAxes:[{
+        ticks: {
+          suggestedMax: 10,
+        }
+      }],
       xAxes: [{
         type: 'linear',
         position: 'bottom'
@@ -68,23 +98,3 @@ var myChart = new Chart(ctx, {
     }
   }
 });
-
-// var ctx = document.getElementById('myChart').getContext('2d');
-// var chart = new Chart(ctx, {
-//   // The type of chart we want to create
-//   type: 'line',
-
-//   // The data for our dataset
-//   data: {
-//     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-//     datasets: [{
-//       label: 'My First dataset',
-//       backgroundColor: 'rgb(255, 99, 132)',
-//       borderColor: 'rgb(255, 99, 132)',
-//       data: [0, 10, 5, 2, 20, 30, 45],
-//     }]
-//   },
-
-//   // Configuration options go here
-//   options: {}
-// });

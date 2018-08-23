@@ -30,5 +30,8 @@ li a {
 }
 
 .visualChart{
-  /* background:whitesmoke; */
+  width: 75%;
+  height: fit-content;
+  background:whitesmoke;
+  margin: 0 auto;
 }
