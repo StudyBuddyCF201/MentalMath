@@ -47,7 +47,9 @@ function makeAdditionQuestions(){
     question.push(`${a} + ${b}`);
     answers.push(`${a + b}`);
     answers.push(`${a + b + getRandom(a + b, offsets)}`);
-    answers.push(`${a + b - getRandom(a + b, offsets)}`);
+    answers.push(`${a + b + getRandom(a + b, offsets)}`);
+    console.log('offsets:' + offsets);
+    console.log('answers' + answers);
     question.push(answers);
     questions.push(question);
   }
