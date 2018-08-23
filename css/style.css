@@ -4,7 +4,13 @@ body {
   background-image: url('../img/desk2.png');
   background-size: cover;
   background-attachment: fixed;
+  font-family: 'Noto Sans', sans-serif;
 }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Fjalla One', sans-serif;
+}
+
 
 nav {
  margin: 0 auto;
@@ -40,6 +46,7 @@ nav li a {
   font-size: 20px;
   position: relative;
   color: #000;
+  padding-bottom: 3px;
 }
 
 nav li a:hover {

@@ -47,9 +47,8 @@ p.notuser {
 }
 
 .formOrGreeting{
+  font-family: 'Fjalla One', sans-serif;
   height: 120px;
-  /* background-color: rgb(247, 247, 247, 0.75); */
-  /* max-width: 25%; */
   margin: 0 auto;
   padding: 5px;
 }
