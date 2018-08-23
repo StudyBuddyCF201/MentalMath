@@ -1,6 +1,6 @@
 body {
-  margin: 0 auto;
-  max-width: 80%;
+  margin: 40px auto 80px auto;
+  max-width: 85%;
 }
 
 nav {
@@ -38,4 +38,14 @@ nav li a {
 
 figure img{
   max-width: 200px;
+}
+
+/* unvisited link */
+a:link {
+  color: #565656;
+}
+
+/* visited link */
+a:visited {
+  color: #565656;
 }
