@@ -39,3 +39,13 @@ nav li a {
 figure img{
   max-width: 200px;
 }
+
+/* unvisited link */
+a:link {
+  color: #565656;
+}
+
+/* visited link */
+a:visited {
+  color: #565656;
+}
