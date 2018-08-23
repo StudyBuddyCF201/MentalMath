@@ -23,9 +23,9 @@ if (JSONpresent){
   var hi = document.createElement('p');
   var notUser = document.createElement('p');
   notUser.className = 'notuser';
-  notUser.textContent = `Not ${JSONpresent.userName}?`;
+  notUser.textContent = `(Not ${JSONpresent.userName}?)`;
   var username = JSONpresent.userName;
-  hi.textContent = `Welcome back ${JSONpresent.userName}`;
+  hi.textContent = `Welcome back, ${JSONpresent.userName}!`;
   greeting[0].appendChild(hi);
   greeting[0].appendChild(notUser);
   notUser.setAttribute('onClick', 'window.location.reload()');

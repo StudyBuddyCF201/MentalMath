@@ -13,7 +13,7 @@ figcaption{
   padding: 10px 30px 10px 30px;
   text-align: center;
   max-width: 79%;
-  margin: auto;
+  margin: 0 auto;
   background-color: rgb(246, 246, 246, 0.75);
   border-radius: 20px;
 }
@@ -44,17 +44,20 @@ p.notuser {
   display: block;
   margin: 0 auto;
   width: 30%;
-  
 }
 
 .formOrGreeting{
-  height: 150px;
+  height: 120px;
+  /* background-color: rgb(247, 247, 247, 0.75); */
+  /* max-width: 25%; */
+  margin: 0 auto;
+  padding: 5px;
 }
 
 .formOrGreeting p {
   position: relative;
   color: #373737;
-  top: 50px;
+  top: 30px;
 }
 
 label, .formOrGreeting p {
@@ -64,11 +67,16 @@ label, .formOrGreeting p {
 }
 
 .formOrGreeting p.notuser {
-  font-size: 15px;
+  font-size: 13px;
   padding-top: 0px;
   margin-top: -10px;
 }
 
 img {
   border-radius: 50% 50%;
+}
+
+.notuser {
+  cursor: pointer;
+  text-decoration: underline;
 }
