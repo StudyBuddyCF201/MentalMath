@@ -48,23 +48,23 @@ var myChart = new Chart(ctx, {
     datasets: [{
       label: 'Addition',
       data: addPlot,
-      borderColor: '#109744',
-      backgroundColor: '#109744',
-      radius: 4
+      borderColor: '#65c409',
+      backgroundColor: '#65c409',
+      radius: 8
     },
     {
       label: 'Subtraction',
       data: subPlot,
       borderColor: '#ce6a2f',
       backgroundColor: '#ce6a2f',
-      radius: 4
+      radius: 8
     },
     {
       label: 'Multiplication',
       data: multPlot,
       borderColor: '#fbbb40',
       backgroundColor: '#fbbb40',
-      radius: 4
+      radius: 8
     }]
   },
   options: {
