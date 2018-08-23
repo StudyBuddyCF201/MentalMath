@@ -41,10 +41,14 @@ p.notuser {
 
 #usernameform input {
   display: block;
+<<<<<<< HEAD
   margin: 13px auto;
   border-radius: 10px;
   font-size: 20px;
   padding: 10px;
+=======
+  margin: 5px auto;
+>>>>>>> master
   width: 30%;
 }
 
