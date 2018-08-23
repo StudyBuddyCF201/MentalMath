@@ -8,11 +8,14 @@ var listOnPage = document.getElementById('load_scores');
 var thisUser = convertToUserObject(userData);
 
 //Create new element and post in ordered list on results page
+//below the chart
 for(var i = userData.results.length-1; i >= 0; i--){
   var resultList = document.createElement('li');
   var sub = userData.results[i]['subject'];
   var subject = sub[0].toUpperCase()+sub.slice(1,sub.length);
-  resultList.textContent = `${subject} | ${userData.results[i]['date']} | ${userData.results[i]['score']}/10`;
+  var resultDate = userData.results[i]['date'];
+  resultDate = 
+  resultList.textContent = `${resultDate} | ${subject} | ${userData.results[i].quizTime} seconds | score: ${userData.results[i]['score']}/10`;
   listOnPage.appendChild(resultList);
 }
 
