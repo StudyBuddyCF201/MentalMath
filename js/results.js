@@ -22,6 +22,7 @@ var userData = JSON.parse(localStorage.getItem('User'));
 
 //Grab ordered list from results page
 var listOnPage = document.getElementById('load_scores');
+var thisUser = convertToUserObject(userData);
 
 //Create new element and post in ordered list on results page
 for(var i = 0; i < userData.results.length; i++){
@@ -32,31 +33,58 @@ for(var i = 0; i < userData.results.length; i++){
   listOnPage.appendChild(resultList);
 }
 
-//got this chart.js code from this here: https://www.chartjs.org/docs/latest/charts/scatter.html
+
+var ScatterPlots = [];
+
+
+function PointOnGraph(){
+  var userResults =  thisUser.results;
+  for(var i = 0; i < userResults.length; i++ ){
+    var dataPoint = {};
+    dataPoint.x = userResults[i].score;
+    dataPoint.y = userResults[i].quizTime;
+    ScatterPlots.push(dataPoint);
+  }
+}
+
+PointOnGraph();
+
+// got this chart.js code from this here: https://www.chartjs.org/docs/latest/charts/scatter.html
 var ctx = document.getElementById('myChart');
-var myChart = new myChart(ctx, {
+var myChart = new Chart(ctx, {
   type: 'scatter',
   data: {
     datasets: [{
-      labels: 'Scatter Dataset',
-      data: [{
-        x: -10,
-        y: 0   
-      }, {
-        x: 0,
-        y: 10
-      }, {
-        x: 10,
-        y:5
-      }]
+      label: 'Scatter Dataset',
+      data: ScatterPlots
     }]
   },
-  options : {
+  options: {
     scales: {
       xAxes: [{
         type: 'linear',
         position: 'bottom'
       }]
     }
-  } 
+  }
 });
+
+// var ctx = document.getElementById('myChart').getContext('2d');
+// var chart = new Chart(ctx, {
+//   // The type of chart we want to create
+//   type: 'line',
+
+//   // The data for our dataset
+//   data: {
+//     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+//     datasets: [{
+//       label: 'My First dataset',
+//       backgroundColor: 'rgb(255, 99, 132)',
+//       borderColor: 'rgb(255, 99, 132)',
+//       data: [0, 10, 5, 2, 20, 30, 45],
+//     }]
+//   },
+
+//   // Configuration options go here
+//   options: {}
+// });
