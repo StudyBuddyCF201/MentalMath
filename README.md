@@ -36,10 +36,17 @@ project
 │    │   app.js
 │    │   home.js
 │    │   results.js
+│    │   about.js
 │    
 └───css
 │    │   reset.css
 │    │   style.css
+│    │   about.css
+│    │   quiz.css
+│    │   results.css
+│    │   index.css
 │    
 └───img
+│    │   ...
+
 ```
