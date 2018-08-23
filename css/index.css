@@ -10,8 +10,6 @@ figcaption{
 }
 
 .cards {
-  max-width: 100%;
-  border: 2px solid black;
   padding: 0 30px 50px 30px;
   text-align: center;
 }
@@ -31,8 +29,11 @@ p.notuser {
 }
 
 #usernameform {
+  color: #373737;
   padding: 20px 0;
   text-align: center;
+  position: relative;
+  top: 80px;
 }
 
 #usernameform input {
@@ -40,6 +41,16 @@ p.notuser {
   margin: 0 auto;
   width: 30%;
   
+}
+
+.formOrGreeting{
+  height: 200px;
+}
+
+.formOrGreeting p {
+  position: relative;
+  color: #373737;
+  top: 80px;
 }
 
 label, .formOrGreeting p {

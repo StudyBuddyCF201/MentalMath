@@ -31,7 +31,8 @@ if (JSONpresent){
   greeting[0].appendChild(hi);
   greeting[0].appendChild(notUser);
   notUser.setAttribute('onClick', 'window.location.reload()');
-  notUser.addEventListener('click', function(){
+  notUser.addEventListener('click', function(e){
+    e.preventDefault();
     localStorage.removeItem('User');
   });
 }
@@ -43,19 +44,18 @@ if (JSONpresent){
 var cardDiv = document.getElementById('cards');
 var quizName;
 cardDiv.addEventListener('click', function(e){
-  // e.preventDefault();
   var usernameInput = document.getElementById('username');
   username = usernameInput.value;
   console.log(username);
   if(username){
-    if(quizName = e.target.dataset.name){
+    if(quizName === e.target.dataset.name){
       var me = new User(username);
       localStorage.setItem('User', JSON.stringify(me));
       runQuiz(quizName);
     }
   }
   else if(JSONpresent){
-    if(quizName = e.target.dataset.name){
+    if(quizName === e.target.dataset.name){
       runQuiz(quizName);
     }
   }
@@ -72,5 +72,3 @@ function runQuiz(quizName){
   localStorage.setItem('selectedQuiz', JSON.stringify(quizName));
   window.location.href = 'quiz.html';
 }
-
-var testUserObject = new User('testuser');
