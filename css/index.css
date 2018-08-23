@@ -16,6 +16,11 @@ figcaption{
   text-align: center;
 }
 
+p.notuser {
+  width: 90px;
+  margin: auto;
+}
+
 .card {
   max-width: 80px;
 }
