@@ -186,7 +186,7 @@ function updateScoreFooter(){
 function startTimer(){
   timer = setInterval(function(){
     seconds++;
-    document.getElementById('time-display').innerText = `${seconds} seconds`;
+    document.getElementById('time-display').innerText = `${seconds}`;
   }, 1000);
 }
 
