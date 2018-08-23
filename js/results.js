@@ -1,22 +1,5 @@
 'use strict';
 
-//***used for dummy info in order to populate localStorage
-// var results = [];
-// var resultOne = new Result ('addition');
-
-// var currentTime = new Date();
-// resultOne.quizTime = currentTime.toDateString();
-// resultOne.score = 7;
-// results.push(resultOne);
-
-// var resultTwo = new Result ('subtraction');
-// resultTwo.quizTime = currentTime.toDateString();
-// resultTwo.score = 9001;
-// results.push(resultTwo);
-
-// var newUser = new User('username', results);
-// localStorage.setItem('User', JSON.stringify(newUser));
-
 //Pull User info from local storage
 var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -25,7 +8,7 @@ var listOnPage = document.getElementById('load_scores');
 var thisUser = convertToUserObject(userData);
 
 //Create new element and post in ordered list on results page
-for(var i = 0; i < userData.results.length; i++){
+for(var i = userData.results.length-1; i >= 0; i--){
   var resultList = document.createElement('li');
   resultList.textContent = `Subject: ${userData.results[i]['subject']}, 
     Score: ${userData.results[i]['score']},  
@@ -85,6 +68,20 @@ var myChart = new Chart(ctx, {
     }]
   },
   options: {
+    tooltips: {
+      callbacks: {
+        title: function(tooltipItem, data) {
+          return data['datasets'][tooltipItem[0]['datasetIndex']]['label'];
+        },
+        label: function(tooltipItem) {
+          return 'Score: '+ tooltipItem['yLabel'];
+        },
+        afterLabel: function(tooltipItem) {
+          return 'Time: '+tooltipItem['xLabel']+' seconds';
+        },
+      },
+      displayColors: false
+    },
     scales: {
       yAxes:[{
         scaleLabel: {
