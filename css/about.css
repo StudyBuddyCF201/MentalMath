@@ -1,5 +1,7 @@
 main{
   color: #565656;
+  width: 60%;
+  margin: auto;
 }
 
 .about{
@@ -13,13 +15,18 @@ main{
 
 section{
   font-size: 25px;
-  color:#C0B283;
+  color:rgba(177, 123, 42, 0.774);
   padding: 30px 10px;
   margin-bottom: 38px;
   margin-top: 20px;
 }
 
 section p{
+  text-align: center;
+}
+
+main h1:first-child{
+  font-size: 30px;
   text-align: center;
 }
 
@@ -42,8 +49,9 @@ h2 {
 }
 
 p {
-  padding-top: 100px;
-  margin-top: -115px;
+  font-size: 82%;
+  max-width: 60%;
+  margin: auto;
 }
 
 p.left {
