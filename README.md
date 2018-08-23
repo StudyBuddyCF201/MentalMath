@@ -2,8 +2,6 @@
 
 Client-side flashcard app - Code 201 Final Project for Code Fellows
 
-## Client-side flashcard app - Code 201 Final Project for Code Fellows
-
 ## Team Members
 * Kendra Ellis
 * Andrew Powers
