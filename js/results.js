@@ -1,22 +1,5 @@
 'use strict';
 
-//***used for dummy info in order to populate localStorage
-// var results = [];
-// var resultOne = new Result ('addition');
-
-// var currentTime = new Date();
-// resultOne.quizTime = currentTime.toDateString();
-// resultOne.score = 7;
-// results.push(resultOne);
-
-// var resultTwo = new Result ('subtraction');
-// resultTwo.quizTime = currentTime.toDateString();
-// resultTwo.score = 9001;
-// results.push(resultTwo);
-
-// var newUser = new User('username', results);
-// localStorage.setItem('User', JSON.stringify(newUser));
-
 //Pull User info from local storage
 var userData = JSON.parse(localStorage.getItem('User'));
 
@@ -85,6 +68,20 @@ var myChart = new Chart(ctx, {
     }]
   },
   options: {
+    tooltips: {
+      callbacks: {
+        title: function(tooltipItem, data) {
+          return data['datasets'][tooltipItem[0]['datasetIndex']]['label'];
+        },
+        label: function(tooltipItem) {
+          return 'Score: '+ tooltipItem['yLabel'];
+        },
+        afterLabel: function(tooltipItem) {
+          return 'Time: '+tooltipItem['xLabel']+' seconds';
+        },
+      },
+      displayColors: false
+    },
     scales: {
       yAxes:[{
         scaleLabel: {
