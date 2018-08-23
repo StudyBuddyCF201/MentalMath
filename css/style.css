@@ -1,3 +1,6 @@
+$thetransition: all .5s 
+cubic-bezier(1,.25,0,.75) 0s;
+
 body {
   margin: 40px auto 80px auto;
   max-width: 90%;
@@ -5,7 +8,6 @@ body {
 
 nav {
  margin-top: 20px;
- border-bottom: 5px solid black; 
 }
 
 nav h1 {
@@ -34,6 +36,26 @@ nav li a {
   display: inline-block;
   text-decoration: none;
   font-size: 20px;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #f00;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: $thetransition;
+    transition: $thetransition;
+    }
+    &:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    }
+  
 }
 
 figure img{
@@ -48,4 +70,8 @@ a:link {
 /* visited link */
 a:visited {
   color: #373737;
+}
+
+a:hover{
+  text-decoration: underline;
 }
