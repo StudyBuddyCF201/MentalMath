@@ -25,7 +25,7 @@ var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
 
 function getRandom(ans, offsets){
   var num = Math.floor(Math.random() * 6 -3);
-  while(num === 0 || offsets.includes(num)){
+  while(num === 0 || offsets.includes(num) || offsets.includes(Math.abs(num))){
     num = Math.floor(Math.random() * 6 - 3);
   }
   offsets.push(num);
@@ -39,7 +39,7 @@ function makeAdditionQuestions(){
   for(var i=0; i < 10; i++){
     //Create a question array
     var question = [];
-    var offsets = [0]; //used for generating additional answers
+    var offsets = []; //used for generating additional answers
     //Create an answer array container
     var answers = [];
     var a = Math.floor(Math.random() * 100);
@@ -48,8 +48,6 @@ function makeAdditionQuestions(){
     answers.push(`${a + b}`);
     answers.push(`${a + b + getRandom(a + b, offsets)}`);
     answers.push(`${a + b + getRandom(a + b, offsets)}`);
-    console.log('offsets:' + offsets);
-    console.log('answers' + answers);
     question.push(answers);
     questions.push(question);
   }
@@ -64,14 +62,17 @@ function makeSubtractionQuestions(){
   for(var i=0; i < 10; i++){
     //Create a question array
     var question = [];
+    var offsets = []; //used for generating additional answers
     //Create an answer array container
     var answers = [];
     var a = Math.floor(Math.random() * 100);
     var b = Math.floor(Math.random() * 100);
     question.push(`${a} - ${b}`);
     answers.push(`${a - b}`);
-    answers.push(`${a - b + getRandom(a - b, answers)}`);
-    answers.push(`${a - b - getRandom(a - b, answers)}`);
+    answers.push(`${a - b + getRandom(a - b, offsets)}`);
+    answers.push(`${a - b - getRandom(a - b, offsets)}`);
+    console.log('offsets' + offsets);
+    console.log('answers' + answers);
     question.push(answers);
     questions.push(question);
   }
@@ -88,12 +89,16 @@ function makeMultiplicationQuestions(){
     var question = [];
     //Create an answer array container
     var answers = [];
-    var a = Math.floor(Math.random() * 10);
-    var b = Math.floor(Math.random() * 10);
+    var offsets = []; //used for generating additional answers
+    var a = Math.floor(Math.random() * 50);
+    var b = Math.floor(Math.random() * 50);
     question.push(`${a} x ${b}`);
     answers.push(`${a * b}`);
-    answers.push(`${a * b + getRandom(a * b, answers)}`);
-    answers.push(`${a * b - getRandom(a * b, answers)}`);
+    answers.push(`${Math.abs(a * b + getRandom(a * b, offsets))}`);
+    answers.push(`${Math.abs(a * b + getRandom(a * b, offsets))}`);
+    // answers.push(`${a * b + getRandom(a * b, offsets)}`);
+    console.log('offsets' + offsets);
+    console.log('answers' + answers);
     question.push(answers);
     questions.push(question);
   }
