@@ -23,11 +23,12 @@ var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
  ****************************************************************/
 
 
-function getRandom(ans, answers){
-  var num = Math.floor(Math.random() * (-4) -2);
-  while(num === 0 || answers.includes(`${ans + num}`)){
-    num = Math.floor(Math.random() * (-4) -2);
+function getRandom(ans, offsets){
+  var num = Math.floor(Math.random() * 6 -3);
+  while(num === 0 || offsets.includes(num)){
+    num = Math.floor(Math.random() * 6 - 3);
   }
+  offsets.push(num);
   return num;
 }
 
@@ -38,14 +39,15 @@ function makeAdditionQuestions(){
   for(var i=0; i < 10; i++){
     //Create a question array
     var question = [];
+    var offsets = [0]; //used for generating additional answers
     //Create an answer array container
     var answers = [];
     var a = Math.floor(Math.random() * 100);
     var b = Math.floor(Math.random() * 100);
     question.push(`${a} + ${b}`);
     answers.push(`${a + b}`);
-    answers.push(`${a + b + getRandom(a + b, answers)}`);
-    answers.push(`${a + b + getRandom(a + b, answers)}`);
+    answers.push(`${a + b + getRandom(a + b, offsets)}`);
+    answers.push(`${a + b - getRandom(a + b, offsets)}`);
     question.push(answers);
     questions.push(question);
   }
@@ -67,7 +69,7 @@ function makeSubtractionQuestions(){
     question.push(`${a} - ${b}`);
     answers.push(`${a - b}`);
     answers.push(`${a - b + getRandom(a - b, answers)}`);
-    answers.push(`${a - b + getRandom(a - b, answers)}`);
+    answers.push(`${a - b - getRandom(a - b, answers)}`);
     question.push(answers);
     questions.push(question);
   }
@@ -89,7 +91,7 @@ function makeMultiplicationQuestions(){
     question.push(`${a} x ${b}`);
     answers.push(`${a * b}`);
     answers.push(`${a * b + getRandom(a * b, answers)}`);
-    answers.push(`${a * b + getRandom(a * b, answers)}`);
+    answers.push(`${a * b - getRandom(a * b, answers)}`);
     question.push(answers);
     questions.push(question);
   }
