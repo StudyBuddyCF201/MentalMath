@@ -5,6 +5,10 @@ figure {
   text-align: center;
 }
 
+figcaption{
+  font-size: 30px;
+}
+
 .cards {
   max-width: 100%;
   border: 2px solid black;
