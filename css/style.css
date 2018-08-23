@@ -1,6 +1,10 @@
 body {
   margin: 40px auto 80px auto;
   max-width: 90%;
+  background-image: url('../img/desk2.png');
+  background-size: cover;
+  background-attachment: fixed;
+  /* height: 100%; */
 }
 
 nav {
