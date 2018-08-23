@@ -1,5 +1,5 @@
 .results{
-  width: 50%;
+  width: 75%;
   height: 100%;
   margin: 10px auto;
   background-color: whitesmoke;
@@ -43,4 +43,5 @@ li a {
 .results h2{
   margin: 25px;
   padding-top: 20px;
+  font-size: 20px;
 }
