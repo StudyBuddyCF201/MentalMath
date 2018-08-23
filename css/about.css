@@ -1,3 +1,7 @@
+main{
+  color: #565656;
+}
+
 .about{
   margin-top: 50px;
   display: inline-block;
@@ -5,6 +9,24 @@
   margin-top: 40px;
   text-align: left;
   width: 100%;
+}
+
+section{
+  font-size: 25px;
+  color:#C0B283;
+  padding: 30px 10px;
+  margin-bottom: 38px;
+  margin-top: 20px;
+}
+
+section p{
+  text-align: center;
+}
+
+h1{
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 h2{
