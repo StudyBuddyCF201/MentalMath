@@ -1,9 +1,7 @@
 'use strict';
 
-var JSONpresent = JSON.parse(localStorage.getItem('User'));
+var JSONpresent = JSON.parse(localStorage.getItem('User')); //Get localStorage data
 var nameForm = document.getElementById('usernameform');
-var username = '';
-var selectedQuiz; //used to store name of selected quiz set
 
 
 //Disable link on results-link and only allow user
@@ -26,13 +24,12 @@ if (JSONpresent){
   var notUser = document.createElement('p');
   notUser.className = 'notuser';
   notUser.textContent = `Not ${JSONpresent.userName}?`;
-  username = JSONpresent.userName;
+  var username = JSONpresent.userName;
   hi.textContent = `Welcome back ${JSONpresent.userName}`;
   greeting[0].appendChild(hi);
   greeting[0].appendChild(notUser);
   notUser.setAttribute('onClick', 'window.location.reload()');
-  notUser.addEventListener('click', function(e){
-    e.preventDefault();
+  notUser.addEventListener('click', function(){
     localStorage.removeItem('User');
   });
 }
@@ -46,16 +43,16 @@ var quizName;
 cardDiv.addEventListener('click', function(e){
   var usernameInput = document.getElementById('username');
   username = usernameInput.value;
-  console.log(username);
+  quizName = e.target.dataset.name;
   if(username){
-    if(quizName === e.target.dataset.name){
+    if(quizName){
       var me = new User(username);
       localStorage.setItem('User', JSON.stringify(me));
       runQuiz(quizName);
     }
   }
   else if(JSONpresent){
-    if(quizName === e.target.dataset.name){
+    if(quizName){
       runQuiz(quizName);
     }
   }
@@ -68,7 +65,6 @@ cardDiv.addEventListener('click', function(e){
 //Saves selected quiz name to localStorage and takes
 //user to quiz page
 function runQuiz(quizName){
-  console.log(selectedQuiz);
   localStorage.setItem('selectedQuiz', JSON.stringify(quizName));
   window.location.href = 'quiz.html';
 }
