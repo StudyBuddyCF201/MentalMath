@@ -18,9 +18,8 @@ ol {
   margin-bottom: 25px;
   width: 75%;
   text-decoration: black;
-  list-style: decimal;
+  list-style: circle;
   list-style-position: inside;
-  /* margin-right: 20px; */
 }
 
 li ::before {
