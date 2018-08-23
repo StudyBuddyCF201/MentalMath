@@ -65,33 +65,46 @@ var myChart = new Chart(ctx, {
     datasets: [{
       label: 'Addition',
       data: addPlot,
-      borderColor: '#fbbb40',
-      backgroundColor: '#fecc1b',
+      borderColor: '#109744',
+      backgroundColor: '#109744',
       radius: 4
     },
     {
       label: 'Subtraction',
       data: subPlot,
-      borderColor: '#004183',
-      backgroundColor: '#5fbdcd',
+      borderColor: '#ce6a2f',
+      backgroundColor: '#ce6a2f',
       radius: 4
     },
     {
       label: 'Multiplication',
       data: multPlot,
-      borderColor: '#94301b',
-      backgroundColor: '#4d4d4f',
+      borderColor: '#fbbb40',
+      backgroundColor: '#fbbb40',
       radius: 4
     }]
   },
   options: {
     scales: {
       yAxes:[{
+        scaleLabel: {
+          display: true,
+          labelString: 'Score'
+        },
         ticks: {
           suggestedMax: 10,
+          beginAtZero: true
         }
       }],
       xAxes: [{
+        ticks: {
+          suggestedMax: 10,
+          beginAtZero: true
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Time (sec)'
+        },
         type: 'linear',
         position: 'bottom'
       }]
