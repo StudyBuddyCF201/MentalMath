@@ -10,9 +10,9 @@ var thisUser = convertToUserObject(userData);
 //Create new element and post in ordered list on results page
 for(var i = userData.results.length-1; i >= 0; i--){
   var resultList = document.createElement('li');
-  resultList.textContent = `Subject: ${userData.results[i]['subject']}, 
-    Score: ${userData.results[i]['score']},  
-    Date: ${userData.results[i]['date']}`;
+  var sub = userData.results[i]['subject'];
+  var subject = sub[0].toUpperCase()+sub.slice(1,sub.length);
+  resultList.textContent = `${subject} | ${userData.results[i]['date']} | ${userData.results[i]['score']}/10`;
   listOnPage.appendChild(resultList);
 }
 
@@ -22,7 +22,7 @@ var subPlot = [];
 var multPlot = [];
 
 
-function PointOnGraph(){
+function pointOnGraph(){
   var userResults =  thisUser.results;
   for(var i = 0; i < userResults.length; i++ ){
     var dataPoint = {};
@@ -38,7 +38,7 @@ function PointOnGraph(){
   }
 }
 
-PointOnGraph();
+pointOnGraph();
 
 // got this chart.js code from this here: https://www.chartjs.org/docs/latest/charts/scatter.html
 var ctx = document.getElementById('myChart');
