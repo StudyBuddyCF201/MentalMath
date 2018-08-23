@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('app.js linked');
-
 // Object definitions
 function QuizSet(name, questions) {
   this.name = name;
@@ -24,7 +22,7 @@ function Result(subject) {
   this.score = 0;
   this.wrong = 0;
   var currentDate = new Date();
-  var time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+  var time = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
   this.date = currentDate.toDateString() + ' ' + time;
   this.quizTime;
 }
