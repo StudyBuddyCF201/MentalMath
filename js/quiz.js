@@ -251,17 +251,20 @@ var xMark = document.getElementById('x-mark');
 var checkMark = document.getElementById('check-mark');
 
 answerList.addEventListener('click', function(e){
-  flip.classList.toggle('is-flipped');
-  if(e.target.dataset.value === 'true'){
-    userResult.score++;
-    checkMark.classList.toggle('enlarge');
+  console.log(e.target.dataset.value);
+  if(e.target.dataset.value !== undefined){
+    flip.classList.toggle('is-flipped');
+    if(e.target.dataset.value === 'true'){
+      userResult.score++;
+      checkMark.classList.toggle('enlarge');
+    }
+    else{
+      userResult.wrong++;
+      xMark.classList.toggle('shake-wrong');
+    }
+    displayProgress();
+    updateScoreFooter();
   }
-  else{
-    userResult.wrong++;
-    xMark.classList.toggle('shake-wrong');
-  }
-  displayProgress();
-  updateScoreFooter();
 });
 
 //Event handler that allow the user to hide/show the

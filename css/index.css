@@ -1,9 +1,12 @@
 figure {
   display: inline-block;
   margin: 50px;
-  min-width: 200px;
+  min-width: 187px;
   text-align: center;
-  outline: 1px solid black;
+}
+
+figcaption{
+  font-size: 30px;
 }
 
 .cards {
@@ -11,6 +14,11 @@ figure {
   border: 2px solid black;
   padding: 0 30px 50px 30px;
   text-align: center;
+}
+
+p.notuser {
+  width: 90px;
+  margin: auto;
 }
 
 .card {
