@@ -2,13 +2,14 @@ main{
   color: #565656;
   width: 60%;
   margin: auto;
+  font-family: 
 }
 
 .about{
-  margin-top: 50px;
   display: inline-block;
   vertical-align: top;
   margin-top: 40px;
+  margin-bottom: 40px;
   text-align: left;
   width: 100%;
 }
@@ -23,11 +24,16 @@ section{
 
 section p{
   text-align: center;
+  font-size: 20px;
 }
 
 main h1:first-child{
   font-size: 30px;
   text-align: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 3px;
+  width: fit-content;
+  margin: auto;
 }
 
 h1{
@@ -39,14 +45,18 @@ h1{
 h2{
   display: inline-block;
   margin-bottom: 5px;
-  font-size: 20px;
   font-weight: bold;
-  padding-top: 100px;
+  padding-top: 20px;
+  text-align: center;
+  width: 100%;
+  font-size: 25px;
 }
 
-h2 {
-  margin-bottom: -115px;
+h2.name{
+  position: relative;
+  right: 20px;
 }
+
 
 p {
   font-size: 82%;
@@ -56,18 +66,14 @@ p {
 
 p.left {
   padding-right: 20px;
+  font-size: 20px;
 }
 
 p.right{
   padding-left: 20px;
+  font-size: 20px;
 }
 
-h2{
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-  font-size: 25px;
-}
 
 .flex{
   display: flex;
@@ -82,9 +88,20 @@ h2{
 
 .flex img{
   max-width: 30%;
-  margin-top: -115px;
+  margin-top: -49px;
   flex: 1;
   border-radius: 50% 50%;
   align-self: center;
 }
 
+a{
+  display: block;
+  padding-top: 20px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #363636;
+}
+
+main div:last-child{
+  margin-bottom: 200px;
+}
