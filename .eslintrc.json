@@ -1,5 +1,12 @@
 {
   "extends": "eslint:recommended",
+  "globals": {
+    "Chart": true,
+    "User": true,
+    "Result": true,
+    "Question": true,
+    "convertToUserObject": true
+  },
   "parserOptions": {
     "ecmaVersion": 6,
     "ecmaFeatures": {

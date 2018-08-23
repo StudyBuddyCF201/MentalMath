@@ -71,8 +71,6 @@ function makeSubtractionQuestions(){
     answers.push(`${a - b}`);
     answers.push(`${a - b + getRandom(a - b, offsets)}`);
     answers.push(`${a - b + getRandom(a - b, offsets)}`);
-    console.log('offsets' + offsets);
-    console.log('answers' + answers);
     question.push(answers);
     questions.push(question);
   }
@@ -97,8 +95,6 @@ function makeMultiplicationQuestions(){
     answers.push(`${Math.abs(a * b + getRandom(a * b, offsets))}`);
     answers.push(`${Math.abs(a * b + getRandom(a * b, offsets))}`);
     // answers.push(`${a * b + getRandom(a * b, offsets)}`);
-    console.log('offsets' + offsets);
-    console.log('answers' + answers);
     question.push(answers);
     questions.push(question);
   }
@@ -260,7 +256,6 @@ var xMark = document.getElementById('x-mark');
 var checkMark = document.getElementById('check-mark');
 
 answerList.addEventListener('click', function(e){
-  console.log(e.target.dataset.value);
   if(e.target.dataset.value !== undefined){
     flip.classList.toggle('is-flipped');
     if(e.target.dataset.value === 'true'){

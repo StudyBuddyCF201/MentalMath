@@ -148,10 +148,12 @@ div #a1, #a2, #a3{
 
 #time-display{
   display: inline-block;
-  width: 70px;
   margin: auto;
   font-size: 50px;
   color: #696969;
+  padding-right: 5px;
+  width: 200px;
+  text-align: right;
 }
 
 .timer {

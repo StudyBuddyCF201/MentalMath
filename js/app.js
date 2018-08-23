@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('app.js linked');
-
 // Object definitions
 function QuizSet(name, questions) {
   this.name = name;
@@ -24,7 +22,7 @@ function Result(subject) {
   this.score = 0;
   this.wrong = 0;
   var currentDate = new Date();
-  var time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+  var time = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
   this.date = currentDate.toDateString() + ' ' + time;
   this.quizTime;
 }
@@ -37,6 +35,12 @@ QuizSet.prototype.addQuestion = function (question, answerArr) {
 User.prototype.saveToLocalStorage = function () {
   localStorage.setItem('User', JSON.stringify(this));
 };
+
+// Make title into link home
+var title = document.getElementById('titleMM');
+title.addEventListener('click', function(){
+  window.location.href = 'index.html';
+});
 
 //Functions that help convert localStorage data
 //parameter userData is parsed JSON from localStorage

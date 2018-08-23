@@ -2,7 +2,6 @@ main{
   color: #565656;
   width: 60%;
   margin: auto;
-  font-family: 
 }
 
 .about{
@@ -61,7 +60,6 @@ h2.name{
   right: 20px;
 }
 
-
 p {
   font-size: 82%;
   max-width: 60%;
@@ -77,7 +75,6 @@ p.right{
   padding-left: 20px;
   font-size: 20px;
 }
-
 
 .flex{
   display: flex;
