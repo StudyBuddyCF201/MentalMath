@@ -22,6 +22,15 @@ var thisUser = convertToUserObject(JSON.parse(localStorage.getItem('User')));
  *                     Function Definitions
  ****************************************************************/
 
+
+function getRandom(a, b, answers){
+  var num = Math.floor(Math.random() * -10 -5);
+  while(num === 0 || answers.includes(`${a + b + num}`)){
+    num = Math.floor(Math.random() * (-10) -5);
+  }
+  return num;
+};
+
 //Generate 10 addition questions
 function makeAdditionQuestions(){
   //Create a question array container
@@ -35,8 +44,8 @@ function makeAdditionQuestions(){
     var b = Math.floor(Math.random() * 100);
     question.push(`${a} + ${b}`);
     answers.push(`${a + b}`);
-    answers.push(`${a + b - 1}`);
-    answers.push(`${a + b + 2}`);
+    answers.push(`${a + b + getRandom(a, b, answers)}`);
+    answers.push(`${a + b + getRandom(a, b, answers)}`);
     question.push(answers);
     questions.push(question);
   }
@@ -57,8 +66,8 @@ function makeSubtractionQuestions(){
     var b = Math.floor(Math.random() * 100);
     question.push(`${a} - ${b}`);
     answers.push(`${a - b}`);
-    answers.push(`${a - b - 1}`);
-    answers.push(`${a - b + 2}`);
+    answers.push(`${a - b + getRandom(a, b, answers)}`);
+    answers.push(`${a - b + getRandom(a, b, answers)}`);
     question.push(answers);
     questions.push(question);
   }
@@ -79,8 +88,8 @@ function makeMultiplicationQuestions(){
     var b = Math.floor(Math.random() * 10);
     question.push(`${a} x ${b}`);
     answers.push(`${a * b}`);
-    answers.push(`${a * b + 1}`);
-    answers.push(`${a * b + 2}`);
+    answers.push(`${a * b + getRandom(a, b, answers)}`);
+    answers.push(`${a * b + getRandom(a, b, answers)}`);
     question.push(answers);
     questions.push(question);
   }
