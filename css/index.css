@@ -77,6 +77,10 @@ img {
   border-radius: 50% 50%;
 }
 
+img:hover{
+  cursor: pointer;
+}
+
 .notuser {
   cursor: pointer;
   text-decoration: underline;
