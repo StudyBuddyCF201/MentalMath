@@ -123,6 +123,21 @@ function generateRandomIndexOrder(arr, size){
 }
 
 
+//Creates timer (in seconds) at top of page
+function startTimer(){
+  timer = setInterval(function(){
+    seconds++;
+    document.getElementById('time-display').innerText = `${seconds}`;
+  }, 1000);
+}
+
+
+//Stops timer and returns end time
+function stopTimer(){
+  clearInterval(timer);
+}
+
+
 //Display Question
 function displayQuestion(index){
   //Get answer display order
@@ -157,6 +172,8 @@ function displayQuestion(index){
   if(progress <= (questionDisplayOrder.length-1)){
     nextButton.innerHTML = 'Next';
   }else{
+    //Stop the timer
+    stopTimer();
     nextButton.innerHTML = 'Results';
   }
 }
@@ -178,19 +195,6 @@ function updateScoreFooter(){
 }
 
 
-//Creates timer (in seconds) at top of page
-function startTimer(){
-  timer = setInterval(function(){
-    seconds++;
-    document.getElementById('time-display').innerText = `${seconds}`;
-  }, 1000);
-}
-
-
-//Stops timer and returns end time
-function stopTimer(){
-  clearInterval(timer);
-}
 
 
 /*****************************************************************
@@ -236,8 +240,7 @@ button.addEventListener('click', function(){
   checkMark.classList.remove('enlarge');
   xMark.classList.remove('shake-wrong');
   if(button.innerHTML === 'Results'){
-    //Stop timer, add time to results object
-    stopTimer();
+    //Add time to results object
     userResult.quizTime = seconds;
     //add result object to User results array
     thisUser.results.push(userResult);
