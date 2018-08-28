@@ -14,6 +14,7 @@ for(var i = userData.results.length-1; i >= 0; i--){
   var sub = userData.results[i]['subject'];
   var subject = sub[0].toUpperCase()+sub.slice(1,sub.length);
   var resultDate = userData.results[i]['date'];
+  // oh noooooooooooooo
   resultDate = 
   resultList.textContent = `${resultDate} | ${subject} | ${userData.results[i].quizTime} seconds | score: ${userData.results[i]['score']}/10`;
   listOnPage.appendChild(resultList);
@@ -24,6 +25,8 @@ var addPlot = [];
 var subPlot = [];
 var multPlot = [];
 
+// a cool piece of code you could use instead of those 3 vars:
+// var plots = { addition: [], subtraction: [], multiplication: [] };
 
 function pointOnGraph(){
   var userResults =  thisUser.results;
@@ -31,6 +34,8 @@ function pointOnGraph(){
     var dataPoint = {};
     dataPoint.y = userResults[i].score;
     dataPoint.x = userResults[i].quizTime;
+    // and then here, instead of your conditionals:
+    // plots[userResults[i].subject].push(dataPoint)
     if(userResults[i].subject === 'addition'){
       addPlot.push(dataPoint);
     }else if(userResults[i].subject === 'subtraction'){
@@ -43,6 +48,7 @@ function pointOnGraph(){
 
 pointOnGraph();
 
+// hooray for attribution!
 // got this chart.js code from this here: https://www.chartjs.org/docs/latest/charts/scatter.html
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
@@ -50,6 +56,7 @@ var myChart = new Chart(ctx, {
   data: {
     datasets: [{
       label: 'Addition',
+      // here, plots.addition
       data: addPlot,
       borderColor: '#65c409',
       backgroundColor: '#65c409',
@@ -57,6 +64,7 @@ var myChart = new Chart(ctx, {
     },
     {
       label: 'Subtraction',
+      // plots.subtraction
       data: subPlot,
       borderColor: '#ce6a2f',
       backgroundColor: '#ce6a2f',
@@ -64,6 +72,7 @@ var myChart = new Chart(ctx, {
     },
     {
       label: 'Multiplication',
+      // plots.multiplication
       data: multPlot,
       borderColor: '#fbbb40',
       backgroundColor: '#fbbb40',
@@ -111,3 +120,4 @@ var myChart = new Chart(ctx, {
     }
   }
 });
+// missing newline
