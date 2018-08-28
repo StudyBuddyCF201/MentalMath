@@ -1,5 +1,8 @@
 'use strict';
 
+// Since this is "runner code", I'd prefer to put it at the bottom of your file.
+// It REALLY won't have an impact on the user's perception on whether that
+// number of seconds is correct or not.
 startTimer();
 
 var questionDisplayOrder = []; //Tracks order of question indices for display
@@ -38,6 +41,10 @@ function makeAdditionQuestions(){
   var questions = [];
   for(var i=0; i < 10; i++){
     //Create a question array
+    // To me, Question is crying out to have a nice constructor!
+    // And to have instance methods for generating answers!
+    // The fact that so much logic is repeated between addition/subtraction/multiplication
+    // makes me feel that even more strongly!
     var question = [];
     var offsets = []; //used for generating additional answers
     //Create an answer array container
@@ -112,6 +119,7 @@ function loadQuestionsIntoQuizSet(quizName, questions){
 
 //Generates random number in range 0 to the length of the question array
 //pushes the index to shownQuestions and displays question/answers in div
+// The above comment is wrong: this function doesn't show anything in a div
 function generateRandomIndexOrder(arr, size){
   for(var i=0; i < size; i++){
     do{
@@ -133,6 +141,7 @@ function startTimer(){
 
 
 //Stops timer and returns end time
+// A one-line function that's only called once could just move that single line inline.
 function stopTimer(){
   clearInterval(timer);
 }
@@ -152,13 +161,17 @@ function displayQuestion(index){
   // For each answer list item
   // Add answer text
   for(var i=0; i < 3; i++){
+    // a template literal is cleaner: `a${i + i}`
     var answer = document.getElementById('a' + (i+1));
     var answerIndex = answerDisplayOrder[i];
     answer.innerText = quizSet.questions[index].answerArr[answerIndex];
     //Set dataset value to true if correct answer, else set to false
+    // This could be done in one line:
+    // answer.dataset.value = (answerIndex === 0);
     if(answerIndex === 0){
       answer.dataset.value = true;
     }
+    // inconsistent on using curly braces always vs. not
     else answer.dataset.value = false;
   }
 
@@ -202,10 +215,12 @@ function updateScoreFooter(){
  ****************************************************************/
 
 
+// These seem like they belong with other global vars at the top of the file.
 //Stores user results for this quiz
 var userResult = new Result(quizSetName);
 
 //Create quiz set object whose name matches quizSetName
+// should include QuizSet in your globals
 var quizSet = new QuizSet(quizSetName, []);
 var questions;
 
@@ -233,9 +248,15 @@ displayQuestion(questionDisplayOrder[progress-1]);
 //Get flipper element from DOM
 var flip = document.getElementsByClassName('flipper')[0];
 
+// I would prefer to set up event listeners before runner code. This bogs down the runner code;
+// it's tough to read over 100 lines as "this is what happens when the page loads".
 //Handler on button to display next question once button is clicked
 var button = document.getElementById('card-button');
 button.addEventListener('click', function(){
+  // It's odd that you do this class-wrangling before you check if you're going
+  // to the results page or not. I'd move these 3 lines into the else.
+  // Right now, you get one last flip animation before you to to the results page
+  // because of this.
   flip.classList.toggle('is-flipped');
   checkMark.classList.remove('enlarge');
   xMark.classList.remove('shake-wrong');
@@ -259,10 +280,12 @@ var xMark = document.getElementById('x-mark');
 var checkMark = document.getElementById('check-mark');
 
 answerList.addEventListener('click', function(e){
+  // could just be if(e.target.dataset.value) {}
   if(e.target.dataset.value !== undefined){
     flip.classList.toggle('is-flipped');
     if(e.target.dataset.value === 'true'){
       userResult.score++;
+      // you don't really want to toggle this; you want to add it.
       checkMark.classList.toggle('enlarge');
     }
     else{
@@ -289,7 +312,7 @@ counterDisplayButton.addEventListener('click', function(e){
   }
 });
 
-
+// This is completely separated out from the rest of your global variables/functions.
 var width = 0;
 function move() {
   var elem = document.getElementById('barStatus');

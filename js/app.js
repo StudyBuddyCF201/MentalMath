@@ -9,6 +9,7 @@ function QuizSet(name, questions) {
 function Question(question, answerArr) {
   this.question = question;
   // the 0th index should always be the correct answer within answer array
+  // this comment is wonderful
   this.answerArr = answerArr;
 }
 
@@ -24,6 +25,8 @@ function Result(subject) {
   var currentDate = new Date();
   var time = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
   this.date = currentDate.toDateString() + ' ' + time;
+  // what does this line give you? If you want to specify a default time (I'd pick -1 seconds), set that;
+  // if you don't want to specify a default, then you don't need this line here at all.
   this.quizTime;
 }
 
@@ -36,6 +39,7 @@ User.prototype.saveToLocalStorage = function () {
   localStorage.setItem('User', JSON.stringify(this));
 };
 
+// See comment in index.html: this works, but you should just make it a link.
 // Make title into link home
 var title = document.getElementById('titleMM');
 title.addEventListener('click', function(){
@@ -59,3 +63,4 @@ function convertToUserObject(userData){
   }
   return user;
 }
+// missing trailing newline
