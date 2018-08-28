@@ -81,6 +81,7 @@ img:hover{
   cursor: pointer;
 }
 
+/* You have 2 sets of declarations for .notuser, see line 70 */
 .notuser {
   cursor: pointer;
   text-decoration: underline;

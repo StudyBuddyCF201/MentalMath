@@ -8,6 +8,7 @@
 }
 
 
+/* text-decoration and list-style-position show up twice, really only need to be here once */
 ol {
   text-decoration: black;
   list-style-type: lower-roman;

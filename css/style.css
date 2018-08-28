@@ -82,6 +82,7 @@ nav li a:before{
   bottom: 0;
   left: 0;
   background-color: #000;
+  /* zombie code is bad */
   /* visibility: visible;   */
   -webkit-transform: scaleX(0);
   -webkit-transition: all 0.3s ease-in-out 0s;
